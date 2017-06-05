@@ -2,7 +2,7 @@
 
 .pomodoro {
   position: relative;
-  padding: 0 5px 15px 5px;
+  padding: 0 5px 10px 5px;
   background: $gray-1;
 
   &-buttons {
@@ -30,10 +30,10 @@
     &__bg {
       @include absolute(top 0 bottom 0 left 0);
       width: 1%;
-      background: $red;
+      background: linear-gradient(to bottom, $pear, $green);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 200ms linear;
+      transition: transform 1s linear;
     }
 
     &__text {
