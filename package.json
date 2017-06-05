@@ -13,10 +13,12 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
+    "pre-push": "^0.1.1",
     "react-scripts": "1.0.7"
   },
   "main": "src/electron-starter.js",
   "homepage": "./",
+  "pre-push": "lint",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
