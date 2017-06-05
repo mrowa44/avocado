@@ -1,12 +1,18 @@
 @import 'shared.scss';
 
 .pomodoro {
-  padding: 0 0 15px;
+  padding: 0 5px 15px 5px;
   background: $gray-1;
 
   &-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 15px;
+  }
+
+  &-buttons .btn {
+    width: 60px;
+    margin-top: 3px;
   }
 }
