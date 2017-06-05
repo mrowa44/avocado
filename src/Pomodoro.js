@@ -71,7 +71,6 @@ class Pomodoro extends Component {
     });
     const secLablel = seconds < 10 ? `0${seconds}` : seconds;
     const percent = 1 - ((minutes + (seconds / 60)) / duration);
-    console.log(percent, minutes, seconds, duration);
 
     return (
       <div className="pomodoro">

@@ -33,7 +33,7 @@
       background: $red;
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 1s linear;
+      transition: transform 200ms linear;
     }
 
     &__text {
