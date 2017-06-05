@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header';
+import Pomodoro from './Pomodoro';
 import './App.css';
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
     return (
       <div className="app window">
         <Header />
+        <Pomodoro />
       </div>
     );
   }
