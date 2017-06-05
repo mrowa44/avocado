@@ -13,7 +13,12 @@ let mainWindow;
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 400, height: 600, titleBarStyle: 'hidden-inset' });
+  mainWindow = new BrowserWindow({
+    height: 600,
+    resizable: false,
+    titleBarStyle: 'hidden-inset',
+    width: 400,
+  });
 
   // and load the index.html of the app.
   const startUrl = process.env.ELECTRON_START_URL || url.format({
