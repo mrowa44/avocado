@@ -7,7 +7,12 @@ class Task extends Component {
   render() {
     return (
       <li className="task list-group-item">
-        {this.props.text}
+        <div className="checkbox">
+          <label htmlFor="task">
+            <input type="checkbox" />
+            {this.props.text}
+          </label>
+        </div>
       </li>
     );
   }
