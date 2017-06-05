@@ -31,9 +31,6 @@
       @include absolute(top 0 bottom 0 left 0);
       width: 1%;
       background: linear-gradient(to bottom, $pear, $green);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 1s linear;
     }
 
     &__text {

@@ -78,7 +78,7 @@ class Pomodoro extends Component {
         <div className={timerClass}>
           <div
             className="pomodoro-timer__bg"
-            style={{ transform: `scaleX(${percent * 100})` }}
+            style={{ width: `${percent * 100}%` }}
           />
           <div className="pomodoro-timer__text">
             {minutes}:{secLablel}
