@@ -17,11 +17,12 @@
     "node-sass-chokidar": "0.0.2",
     "npm-run-all": "^4.0.2",
     "pre-push": "^0.1.1",
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "sass-lint": "^1.10.2"
   },
   "main": "src/electron-starter.js",
   "homepage": "./",
-  "pre-push": "lint",
+  "pre-push": ["lint", "sass-lint"],
   "scripts": {
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -29,6 +30,7 @@
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "dev": "npm run start | npm run electron-dev",
     "lint": "eslint .",
+    "sass-lint": "sass-lint -c .sass-lint.yml 'src/*.scss' -v",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",

@@ -1,0 +1,186 @@
+files:
+  include: '**/*.s+(a|c)ss'
+options:
+  formatter: stylish
+  merge-default-rules: false
+rules:
+  bem-depth:
+    - 1
+    - max-depth: 1
+  brace-style:
+    - 1
+    - allow-single-line: false
+  class-name-format:
+    - 1
+    - convention: hyphenatedbem
+  id-name-format:
+    - 1
+    - convention: hyphenatedbem
+  leading-zero:
+    - 1
+    - include: true
+  nesting-depth:
+    - 1
+    - max-depth: 5
+  no-css-comments: 0
+  no-trailing-zero: 1
+  no-transition-all: 1
+  placeholder-in-extend: 1
+  placeholder-name-format:
+    - 1
+    - convention: hyphenatedbem
+  property-sort-order:
+    - 1
+    - order:
+        - content
+        - position
+        - top
+        - right
+        - bottom
+        - left
+        - z-index
+        - flex
+        - flex-basis
+        - flex-grow
+        - flex-shrink
+        - align-self
+        - display
+        - flex-flow
+        - flex-direction
+        - flex-wrap
+        - align-content
+        - align-items
+        - justify-content
+        - order
+        - visibility
+        - float
+        - clear
+        - table-layout
+        - border-collapse
+        - empty-cells
+        - box-sizing
+        - object-fit
+        - width
+        - min-width
+        - max-width
+        - height
+        - min-height
+        - max-height
+        - margin
+        - margin-top
+        - margin-right
+        - margin-bottom
+        - margin-left
+        - padding
+        - padding-top
+        - padding-right
+        - padding-bottom
+        - padding-left
+        - overflow
+        - overflow-x
+        - overflow-y
+        - font
+        - font-family
+        - font-size
+        - font-style
+        - font-variant
+        - font-weight
+        - letter-spacing
+        - line-height
+        - list-style
+        - list-style-image
+        - list-style-position
+        - list-style-type
+        - text-align
+        - text-decoration
+        - text-indent
+        - text-overflow
+        - text-shadow
+        - text-transform
+        - quotes
+        - vertical-align
+        - white-space
+        - appearance
+        - backface-visibility
+        - background
+        - background-attachment
+        - background-color
+        - background-image
+        - background-position
+        - background-repeat
+        - background-size
+        - border
+        - border-color
+        - border-radius
+        - border-style
+        - border-width
+        - border-top
+        - border-top-color
+        - border-top-style
+        - border-top-width
+        - border-right
+        - border-right-color
+        - border-right-style
+        - border-right-width
+        - border-bottom
+        - border-bottom-color
+        - border-bottom-style
+        - border-bottom-width
+        - border-left
+        - border-left-color
+        - border-left-style
+        - border-left-width
+        - border-top-left-radius
+        - border-top-right-radius
+        - border-bottom-right-radius
+        - border-bottom-left-radius
+        - box-shadow
+        - color
+        - cursor
+        - fill
+        - fill-opacity
+        - filter
+        - outline
+        - outline-color
+        - outline-offset
+        - outline-style
+        - outline-width
+        - opacity
+        - pointer-events
+        - stroke
+        - stroke-alignment
+        - stroke-dashadjust
+        - stroke-dasharray
+        - stroke-dashcorner
+        - stroke-dashoffset
+        - stroke-linecap
+        - stroke-linejoin
+        - stroke-miterlimit
+        - stroke-opacity
+        - stroke-width
+        - transform
+        - transform-origin
+        - will-change
+        - transition
+        - transition-delay
+        - transition-duration
+        - transition-property
+        - transition-timing-function
+        - animation
+        - animation-delay
+        - animation-direction
+        - animation-duration
+        - animation-fill-mode
+        - animation-iteration-count
+        - animation-name
+        - animation-play-state
+        - animation-timing-function
+  quotes: 1
+  variable-for-property:
+    - 1
+    - properties:
+        - font
+        - font-family
+        - font-size
+        - font-weight
+        - z-index
