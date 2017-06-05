@@ -1,4 +1,9 @@
+@import 'shared.scss';
+
 .pomodoro {
+  padding: 0 0 15px;
+  background: $gray-1;
+
   &-buttons {
     display: flex;
     justify-content: space-around;
