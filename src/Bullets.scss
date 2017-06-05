@@ -1,0 +1,24 @@
+@import 'shared.scss';
+
+.bullets {
+  display: flex;
+  margin-left: 10px;
+
+  &__bullet {
+    @include circle(4px);
+    position: relative;
+    margin-right: 5px;
+
+    &:nth-child(4n) {
+      margin-right: 18px;
+    }
+  }
+
+  &__bullet--done {
+    background: rgba($black, 0.6);
+  }
+
+  &__bullet--remaining {
+    background: rgba($black, 0.2);
+  }
+}

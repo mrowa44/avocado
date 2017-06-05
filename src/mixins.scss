@@ -35,3 +35,8 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin circle($args) {
+  @include sizing($args);
+  border-radius: 50%;
+}

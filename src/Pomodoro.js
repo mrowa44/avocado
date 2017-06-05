@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 
 import Button from './Button';
+import Bullets from './Bullets';
 import './Pomodoro.css';
 
 class Pomodoro extends Component {
@@ -97,6 +98,7 @@ class Pomodoro extends Component {
           <Button text="55 min" onClick={this.handleButtonClick(55)} />
           <Button text="60 min" onClick={this.handleButtonClick(60)} />
         </div>
+        <Bullets done={2} remaining={4} />
       </div>
     );
   }
