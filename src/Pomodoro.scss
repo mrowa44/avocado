@@ -1,6 +1,7 @@
 @import 'shared.scss';
 
 .pomodoro {
+  position: relative;
   padding: 0 5px 15px 5px;
   background: $gray-1;
 
@@ -14,5 +15,34 @@
   &-buttons .btn {
     width: 60px;
     margin-top: 3px;
+  }
+
+  &-timer {
+    @include absolute(top 0 right 0 bottom 0 left 0);
+    @include flex-centered;
+    font-size: $fs-50;
+    background: $gray-1;
+    box-shadow: inset 0 0 40px rgba($black, 0.15);
+    color: rgba($black, 0.5);
+    opacity: 0;
+    pointer-events: none;
+
+    &__bg {
+      @include absolute(top 0 bottom 0 left 0);
+      width: 1%;
+      background: $red;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s linear;
+    }
+
+    &__text {
+      z-index: $idx-1;
+    }
+  }
+
+  &-timer--running {
+    opacity: 1;
+    pointer-events: all;
   }
 }
