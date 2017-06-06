@@ -1,6 +1,7 @@
 @import 'shared.scss';
 
 .header {
+  // @include absolute(top 0);
   padding: 0 5px 5px;
 
   &-drag {
@@ -8,6 +9,10 @@
     -webkit-app-region: drag;
     -webkit-user-drag: auto;
     user-drag: auto;
+  }
+
+  form {
+    margin-bottom: 4px;
   }
 
   input {

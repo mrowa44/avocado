@@ -6,6 +6,12 @@ const initialState = [
   { text: 'Take out garbage 3', done: false, id: 3 },
   { text: 'Take out garbage 4', done: false, id: 4 },
   { text: 'Take out garbage 5', done: false, id: 5 },
+  { text: 'Take out garbage 3', done: false, id: 6 },
+  { text: 'Take out garbage 3', done: false, id: 7 },
+  { text: 'Take out garbage 3', done: false, id: 8 },
+  { text: 'Take out garbage 4', done: false, id: 9 },
+  { text: 'Take out garbage 4', done: false, id: 10 },
+  { text: 'Take out garbage 4', done: false, id: 11 },
 ];
 
 export default(state = initialState, action) => {

@@ -1,4 +1,6 @@
 .task-list {
+  overflow: auto;
+
   &.list-group {
     margin-top: 10px;
   }
