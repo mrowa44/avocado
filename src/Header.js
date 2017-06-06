@@ -1,13 +1,33 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Mousetrap from 'mousetrap';
 
+import { addTask } from './actions/taskList';
 import './Header.css';
 
 class Header extends Component {
+  constructor() {
+    super();
+    this.addTodo = this.addTodo.bind(this);
+  }
+
   componentDidMount() {
     Mousetrap.bind('command+l', () => {
       this.input.focus();
     });
+  }
+
+  addTodo(event) {
+    event.preventDefault();
+    const input = this.input;
+    if (input.value !== '') {
+      this.props.dispatch(addTask({
+        done: false,
+        text: input.value,
+      }));
+      input.value = '';
+    }
   }
 
   render() {
@@ -16,16 +36,22 @@ class Header extends Component {
         <div className="header-drag" />
 
         <div className="toolbar-actions">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="+ Add a task"
-            ref={(node) => { this.input = node; }}
-          />
+          <form onSubmit={this.addTodo}>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="+ Add a task"
+              ref={(node) => { this.input = node; }}
+            />
+          </form>
         </div>
       </header>
     );
   }
 }
 
-export default Header;
+Header.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect()(Header);
