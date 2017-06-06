@@ -1,5 +1,11 @@
+@import 'shared.scss';
+
 .task {
-  label {
-    user-select: auto;
+  display: flex;
+  align-items: center;
+  user-select: auto;
+
+  input[type='checkbox'] {
+    margin: -2px 10px 0 5px;
   }
 }

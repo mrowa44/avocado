@@ -1,7 +1,6 @@
 @import 'shared.scss';
 
 .header {
-  // @include absolute(top 0);
   padding: 0 5px 5px;
 
   &-drag {
@@ -12,7 +11,7 @@
   }
 
   form {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 
   input {
