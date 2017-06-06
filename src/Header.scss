@@ -6,6 +6,8 @@
   &-drag {
     padding: 17px 0;
     -webkit-app-region: drag;
+    -webkit-user-drag: auto;
+    user-drag: auto;
   }
 
   input {
