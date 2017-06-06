@@ -1,8 +1,22 @@
+@import 'shared.scss';
+
 .header {
   padding: 0 5px 5px;
 
   &-drag {
     padding: 17px 0;
     -webkit-app-region: drag;
+  }
+
+  input {
+    padding: 0px 10px;
+    border: 1px solid rgba($black, 0.4);
+
+    &:focus {
+      border: 1px solid rgba($black, 0.4);
+      box-shadow: none;
+      box-shadow: 0 0 1pt 1pt $blue;
+      outline: none;
+    }
   }
 }
