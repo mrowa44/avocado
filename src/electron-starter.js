@@ -1,15 +1,16 @@
 const electron = require('electron');
-// Module to control application life.
-const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
-
+const Store = require('electron-store');
 const path = require('path');
 const url = require('url');
+
+const app = electron.app; // Module to control application life.
+const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+
+const store = new Store();
 
 function createWindow() {
   // Create the browser window.
