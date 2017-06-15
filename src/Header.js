@@ -6,6 +6,8 @@ import Mousetrap from 'mousetrap';
 import { addTask } from './actions/taskList';
 import './Header.css';
 
+const { ipcRenderer: ipc } = window.require('electron');
+
 class Header extends Component {
   constructor() {
     super();
@@ -19,6 +21,8 @@ class Header extends Component {
   }
 
   addTodo(event) {
+    ipc.send('dupa');
+
     event.preventDefault();
     const input = this.input;
     if (input.value !== '') {
@@ -34,7 +38,6 @@ class Header extends Component {
     return (
       <header className="header toolbar toolbar-header">
         <div className="header-drag" />
-
         <div className="toolbar-actions">
           <form onSubmit={this.addTodo}>
             <input
