@@ -7,6 +7,7 @@ const remove = require('lodash.remove');
 const app = electron.app; // Module to control application life.
 const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
 
+require('electron-context-menu')();
 require('./electron/events');
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -21,7 +22,7 @@ function createWindow() {
     height: 600,
     resizable: isDev,
     titleBarStyle: 'hidden-inset',
-    width: isDev ? 1000 : 400,
+    width: 400,
   });
 
   // and load the index.html of the app.
