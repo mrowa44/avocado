@@ -31,7 +31,7 @@ class TaskList extends Component {
   render() {
     return (
       <ul className="task-list list-group">
-        { this.state.tasks.map(task => <Task text={task.text} key={task.id} />) }
+        { this.state.tasks.map(task => <Task {...task} key={task.id} />) }
       </ul>
     );
   }
