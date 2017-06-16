@@ -13,14 +13,15 @@ require('./electron/events');
 let mainWindow;
 
 const store = new Store();
+const isDev = process.env.NODE_ENV === 'development';
 
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     height: 600,
-    resizable: false,
+    resizable: isDev,
     titleBarStyle: 'hidden-inset',
-    width: 400,
+    width: isDev ? 1000 : 400,
   });
 
   // and load the index.html of the app.
@@ -32,7 +33,9 @@ function createWindow() {
   mainWindow.loadURL(startUrl);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  if (isDev) {
+    mainWindow.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
