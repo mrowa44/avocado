@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Mousetrap from 'mousetrap';
 
-import { addTask } from './actions/taskList';
 import './Header.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
@@ -26,10 +23,7 @@ class Header extends Component {
     event.preventDefault();
     const input = this.input;
     if (input.value !== '') {
-      this.props.dispatch(addTask({
-        done: false,
-        text: input.value,
-      }));
+      // add task
       input.value = '';
     }
   }
@@ -53,8 +47,4 @@ class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
-export default connect()(Header);
+export default Header;
