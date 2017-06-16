@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
+import cx from 'classnames';
 
 import {
   ADD_TODO,
@@ -12,12 +13,20 @@ class Header extends Component {
   constructor() {
     super();
     this.addTodo = this.addTodo.bind(this);
+    this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.state = {
+      collapsed: false,
+    };
   }
 
   componentDidMount() {
     Mousetrap.bind('command+l', () => {
       this.input.focus();
     });
+  }
+
+  toggleCollapse() {
+    this.setState({ collapsed: !this.state.collapsed });
   }
 
   addTodo(event) {
@@ -30,9 +39,12 @@ class Header extends Component {
   }
 
   render() {
+    const collapseClass = cx('header__collapse', {
+      'header__collapse--collapsed': this.state.collapsed,
+    });
     return (
       <header className="header toolbar toolbar-header">
-        <div className="header-drag" />
+        <div className="header__drag" />
         <div className="toolbar-actions">
           <form onSubmit={this.addTodo}>
             <input
@@ -43,6 +55,11 @@ class Header extends Component {
             />
           </form>
         </div>
+        <button
+          type="button"
+          className={collapseClass}
+          onClick={this.toggleCollapse}
+        />
       </header>
     );
   }
