@@ -1,5 +1,4 @@
 const electron = require('electron');
-const Store = require('electron-store');
 const path = require('path');
 const url = require('url');
 
@@ -12,7 +11,6 @@ require('./electron/events');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-const store = new Store();
 const isDev = process.env.NODE_ENV === 'development';
 
 function createWindow() {
@@ -45,11 +43,6 @@ function createWindow() {
     mainWindow = null;
   });
 }
-
-app.on('browser-window-focus', () => {
-  const task = { text: `Dupa ${Math.random()}`, id: Math.ceil(Math.random() * 10) };
-  store.set('tasks', [task, ...store.get('tasks')]);
-});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
