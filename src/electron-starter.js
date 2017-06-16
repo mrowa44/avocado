@@ -1,6 +1,8 @@
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
+const Store = require('electron-store');
+const remove = require('lodash.remove');
 
 const app = electron.app; // Module to control application life.
 const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
@@ -64,6 +66,13 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+app.on('before-quit', () => {
+  const store = new Store();
+  const tasks = store.get('tasks');
+  remove(tasks, task => task.done);
+  store.set('tasks', tasks);
 });
 
 // In this file you can include the rest of your app's specific main process
