@@ -24,6 +24,10 @@ class TaskList extends Component {
     });
   }
 
+  componentWillUnmount() {
+    ipc.removeAllListeners(FETCHED_TASKS);
+  }
+
   render() {
     return (
       <ul className="task-list list-group">
