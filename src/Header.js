@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
 
+import {
+  ADD_TODO,
+} from './constants';
 import './Header.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
@@ -18,12 +21,10 @@ class Header extends Component {
   }
 
   addTodo(event) {
-    ipc.send('dupa');
-
     event.preventDefault();
     const input = this.input;
     if (input.value !== '') {
-      // add task
+      ipc.send(ADD_TODO, input.value);
       input.value = '';
     }
   }
