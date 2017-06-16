@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
+import {
+  FETCHED_TASKS,
+  FETCH_TASKS,
+} from './constants';
 import Task from './Task';
 import './TaskList.css';
 
+const { ipcRenderer: ipc } = window.require('electron');
+
 class TaskList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tasks: [],
+    };
+  }
+
   componentDidMount() {
-    // fetch tasks
+    ipc.send(FETCH_TASKS);
+    ipc.on(FETCHED_TASKS, (event, tasks) => {
+      this.setState({ tasks });
+    });
   }
 
   render() {
     return (
       <ul className="task-list list-group">
-        { this.props.taskList.map(task => <Task text={task.text} key={task.id} />) }
+        { this.state.tasks.map(task => <Task text={task.text} key={task.id} />) }
       </ul>
     );
   }
 }
-
-TaskList.propTypes = {
-  taskList: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-TaskList.defaultProps = {
-  taskList: [],
-};
 
 export default TaskList;
