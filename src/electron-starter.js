@@ -46,6 +46,11 @@ function createWindow() {
   });
 }
 
+app.on('browser-window-focus', () => {
+  const task = { text: `Dupa ${Math.random()}`, id: Math.ceil(Math.random() * 10) };
+  store.set('tasks', [task, ...store.get('tasks')]);
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
