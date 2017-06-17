@@ -130,12 +130,19 @@ section {
 
 .download-btn {
   @include sizing(250px 60px);
-  background: linear-gradient(to bottom, $green-3 20%, $green-5);
+  background: $green-4;
   border: 0;
   border-radius: 5px;
+  box-shadow: 0 5px 40px 5px rgba($green-3, 0.4);
   color: rgba($black, 0.4);
+  cursor: pointer;
   font-size: 1.1rem;
   font-weight: bold;
+  transition: background 200ms;
+
+  &:hover {
+    background: $green-3;
+  }
 }
 
 footer {

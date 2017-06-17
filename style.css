@@ -100,6 +100,7 @@ section {
     margin-top: 30px; }
   .features-section li {
     font-size: 1.1rem;
+    line-height: 35px;
     padding: 20px 0; }
 
 .download-section {
@@ -111,12 +112,17 @@ section {
 .download-btn {
   width: 250px;
   height: 60px;
-  background: linear-gradient(to bottom, #55FFA2 20%, #35CE80);
+  background: #47E993;
   border: 0;
   border-radius: 5px;
+  box-shadow: 0 5px 40px 5px rgba(85, 255, 162, 0.4);
   color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
   font-size: 1.1rem;
-  font-weight: bold; }
+  font-weight: bold;
+  transition: background 200ms; }
+  .download-btn:hover {
+    background: #55FFA2; }
 
 footer {
   background: #242f36;
