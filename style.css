@@ -60,12 +60,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fafafa;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-top: 20px; }
   .header__circles-text h1 {
+    color: rgba(250, 250, 250, 0.95);
     font-size: 7rem;
     margin: 0; }
   .header__circles-text h3 {
+    color: rgba(0, 0, 0, 0.4);
     font-size: 2rem;
     margin: 0; }
 

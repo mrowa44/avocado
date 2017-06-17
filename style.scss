@@ -63,15 +63,17 @@ body {
 .header__circles-text {
   @include absolute(top 0 right 0 bottom 0 left 0);
   @include flex-centered;
-  color: $white;
   flex-direction: column;
+  padding-top: 20px;
 
   h1 {
+    color: rgba($white, 0.95);
     font-size: 7rem;
     margin: 0;
   }
 
   h3 {
+    color: rgba($black, 0.4);
     font-size: 2rem;
     margin: 0;
   }
