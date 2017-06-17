@@ -1,0 +1,54 @@
+@import 'mixins';
+
+$blue-1: #23356b;
+$blue-2: #223c90;
+$blue-3: #243881;
+$blue-4: #233677;
+$blue-5: #243066;
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+.header {
+  background: $blue-1;
+  height: 100vh;
+}
+
+.header__circles {
+  height: 100%;
+  position: relative;
+
+  &--first {
+    @include circle(1100px);
+    background: $blue-2;
+    display: flex;
+    margin: auto;
+    transform: translateY(-5%);
+  }
+
+  &--second {
+    @include circle(900px);
+    @include flex-centered;
+    background: $blue-3;
+    display: flex;
+    margin: auto;
+  }
+
+  &--third {
+    @include circle(700px);
+    @include flex-centered;
+    background: $blue-4;
+    display: flex;
+    margin: auto;
+  }
+
+  &--fourth {
+    @include circle(500px);
+    @include flex-centered;
+    background: $blue-5;
+    margin: auto;
+  }
+}
