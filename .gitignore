@@ -22,3 +22,5 @@ yarn-error.log*
 
 src/**/*.css
 !/src/assets
+.sass-cache*
+style.css.map
