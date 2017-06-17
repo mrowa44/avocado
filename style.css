@@ -126,6 +126,17 @@ section {
 
 footer {
   background: #242f36;
-  min-height: 100px; }
+  color: #fafafa;
+  min-height: 100px;
+  position: relative; }
+  footer p {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
 
 /*# sourceMappingURL=style.css.map */
