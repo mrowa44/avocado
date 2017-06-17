@@ -1,29 +1,36 @@
 @import 'mixins';
 
-$blue-1: #23356b;
-$blue-2: #223c90;
-$blue-3: #243881;
-$blue-4: #233677;
-$blue-5: #243066;
+$green-1: #242f36;
+$green-2: #28332D;
+$green-3: #55FFA2;
+$green-4: #47E993;
+$green-5: #35CE80;
+$green-6: #1CB067;
+
+$white: #fafafa;
+$black: #000;
 
 html,
 body {
+  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   min-height: 100%;
 }
 
 .header {
-  background: $blue-1;
+  background: $green-2;
   height: 100vh;
 }
 
 .header__circles {
   height: 100%;
+  overflow: hidden;
   position: relative;
 
   &--first {
     @include circle(1100px);
-    background: $blue-2;
+    background: $green-3;
+    box-shadow: 0 0 80px 20px rgba($black, 0.3);
     display: flex;
     margin: auto;
     transform: translateY(-5%);
@@ -32,7 +39,7 @@ body {
   &--second {
     @include circle(900px);
     @include flex-centered;
-    background: $blue-3;
+    background: $green-4;
     display: flex;
     margin: auto;
   }
@@ -40,7 +47,7 @@ body {
   &--third {
     @include circle(700px);
     @include flex-centered;
-    background: $blue-4;
+    background: $green-5;
     display: flex;
     margin: auto;
   }
@@ -48,7 +55,90 @@ body {
   &--fourth {
     @include circle(500px);
     @include flex-centered;
-    background: $blue-5;
+    background: $green-6;
     margin: auto;
   }
+}
+
+.header__circles-text {
+  @include absolute(top 0 right 0 bottom 0 left 0);
+  @include flex-centered;
+  color: $white;
+  flex-direction: column;
+
+  h1 {
+    font-size: 7rem;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin: 0;
+  }
+}
+
+section {
+  margin: auto;
+  max-width: 1000px;
+
+  h3 {
+    font-size: 2rem;
+    padding: 30px 0;
+    text-align: center;
+    width: 100%;
+
+    &::after {
+      background: $green-6;
+      content: '';
+      display: block;
+      height: 2px;
+      width: 50px;
+      margin: 20px auto 0;
+    }
+  }
+
+  .answer {
+    font-size: 1.3rem;
+    line-height: 35px;
+    margin: auto;
+    max-width: 1070px;
+    padding: 10px 20px 110px;
+  }
+}
+
+.features-section {
+  display: flex;
+  padding-bottom: 100px;
+  padding-top: 50px;
+
+  ul {
+    list-style-type: circle;
+    margin-top: 30px;
+  }
+
+  li {
+    font-size: 1.1rem;
+    line-height: 35px;
+    padding: 20px 0;
+  }
+}
+
+.download-section {
+  @include flex-centered;
+  padding: 100px 0;
+}
+
+.download-btn {
+  @include sizing(250px 60px);
+  background: linear-gradient(to bottom, $green-3 20%, $green-5);
+  border: 0;
+  border-radius: 5px;
+  color: rgba($black, 0.4);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+footer {
+  background: $green-1;
+  min-height: 100px;
 }
