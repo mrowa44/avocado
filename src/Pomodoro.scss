@@ -30,7 +30,7 @@
     &__bg {
       @include absolute(top 0 bottom 0 left 0);
       width: 1%;
-      background: linear-gradient(to bottom, $pear, $green);
+      background: linear-gradient(to bottom, $light-green, $green);
     }
 
     &__text {
