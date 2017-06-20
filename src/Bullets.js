@@ -6,6 +6,8 @@ import './Bullets.css';
 class Bullets extends Component {
   render() {
     const { done, remaining } = this.props;
+    const left = Math.max(remaining, 0);
+
     return (
       <div className="bullets">
         {done ?
@@ -15,7 +17,7 @@ class Bullets extends Component {
           : null
         }
         {remaining ?
-            [...Array(remaining)].map(() => (<div
+            [...Array(left)].map(() => (<div
               className="bullets__bullet bullets__bullet--remaining"
             />))
           : null
