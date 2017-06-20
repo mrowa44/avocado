@@ -5,14 +5,21 @@ import './Bullets.css';
 
 class Bullets extends Component {
   render() {
+    const { done, remaining } = this.props;
     return (
       <div className="bullets">
-        {[...Array(this.props.done)].map(() => (<div
-          className="bullets__bullet bullets__bullet--done"
-        />))}
-        {[...Array(this.props.remaining)].map(() => (<div
-          className="bullets__bullet bullets__bullet--remaining"
-        />))}
+        {done ?
+            [...Array(done)].map(() => (<div
+              className="bullets__bullet bullets__bullet--done"
+            />))
+          : null
+        }
+        {remaining ?
+            [...Array(remaining)].map(() => (<div
+              className="bullets__bullet bullets__bullet--remaining"
+            />))
+          : null
+        }
       </div>
     );
   }

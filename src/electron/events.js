@@ -1,10 +1,14 @@
 const Store = require('electron-store');
+const { formatToday } = require('../helpers');
 const { ipcMain: ipc } = require('electron');
 
 const {
   ADD_TODO,
-  FETCH_TASKS,
+  FETCHED_POMODOROS,
   FETCHED_TASKS,
+  FETCH_POMODOROS,
+  FETCH_TASKS,
+  POMODORO_FINISHED,
   TOGGLE_DONE,
 } = require('../constants');
 
@@ -36,4 +40,23 @@ ipc.on(TOGGLE_DONE, (event, taskId) => {
 
   store.set('tasks', newTasks);
   event.sender.send(FETCHED_TASKS, store.get('tasks'));
+});
+
+ipc.on(FETCH_POMODOROS, (event) => {
+  if (!store.get('pomodoros')) {
+    store.set('pomodoros', { goal: 6 });
+  }
+
+  const today = formatToday();
+  if (!store.get(`pomodoros.${today}`)) {
+    store.set(`pomodoros.${today}`, 0);
+  }
+  event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
+});
+
+ipc.on(POMODORO_FINISHED, (event) => {
+  const key = `pomodoros.${formatToday()}`;
+  const count = store.get(key);
+  store.set(key, count + 1);
+  event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
 });

@@ -3,7 +3,15 @@ import cx from 'classnames';
 
 import Button from './Button';
 import Bullets from './Bullets';
+import {
+  FETCHED_POMODOROS,
+  FETCH_POMODOROS,
+  POMODORO_FINISHED,
+} from './constants';
+import { formatToday } from './helpers';
 import './Pomodoro.css';
+
+const { ipcRenderer: ipc } = window.require('electron');
 
 class Pomodoro extends Component {
   static sendNotification() {
@@ -23,7 +31,25 @@ class Pomodoro extends Component {
       minutes: 0,
       running: false,
       seconds: 0,
+      pomodoros: {
+        done: 0,
+        goal: 0,
+      },
     };
+  }
+
+  componentDidMount() {
+    ipc.send(FETCH_POMODOROS);
+    ipc.on(FETCHED_POMODOROS, (event, pomodoros) => {
+      this.setState({ pomodoros: {
+        done: pomodoros[formatToday()],
+        goal: pomodoros.goal,
+      } });
+    });
+  }
+
+  componentWillUnmount() {
+    ipc.removeAllListeners(FETCHED_POMODOROS);
   }
 
   startTimer(minutes) {
@@ -52,11 +78,12 @@ class Pomodoro extends Component {
       clearInterval(this.timer);
     }
     this.setState({
-      running: false,
-      minutes: 0,
-      seconds: 0,
       duration: 0,
+      minutes: 0,
+      running: false,
+      seconds: 0,
     });
+    ipc.send(POMODORO_FINISHED);
   }
 
   handleButtonClick(minutes) {
@@ -66,7 +93,7 @@ class Pomodoro extends Component {
   }
 
   render() {
-    const { minutes, seconds, duration, running } = this.state;
+    const { minutes, seconds, duration, running, pomodoros } = this.state;
     const timerClass = cx('pomodoro-timer', {
       'pomodoro-timer--running': running,
     });
@@ -85,7 +112,7 @@ class Pomodoro extends Component {
           </div>
         </div>
         <div className="pomodoro-buttons">
-          <Button text="15 min" onClick={this.handleButtonClick(15)} />
+          <Button text="15 min" onClick={this.handleButtonClick(1)} />
           <Button text="20 min" onClick={this.handleButtonClick(20)} />
           <Button text="25 min" onClick={this.handleButtonClick(25)} />
           <Button text="30 min" onClick={this.handleButtonClick(30)} />
@@ -96,7 +123,7 @@ class Pomodoro extends Component {
           <Button text="55 min" onClick={this.handleButtonClick(55)} />
           <Button text="60 min" onClick={this.handleButtonClick(60)} />
         </div>
-        <Bullets done={2} remaining={4} />
+        <Bullets done={pomodoros.done} remaining={pomodoros.goal - pomodoros.done} />
       </div>
     );
   }
