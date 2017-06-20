@@ -1,24 +1,25 @@
 @import 'mixins';
 
 $green-1: #242f36;
-$green-2: #28332D;
-$green-3: #55FFA2;
-$green-4: #47E993;
-$green-5: #35CE80;
-$green-6: #1CB067;
+// $green-2: #28332D;
+$green-3: #55ffa2;
+$green-4: #47e993;
+$green-5: #35ce80;
+$green-6: #1cb067;
 
 $white: #fafafa;
 $black: #000;
 
 html,
 body {
+  background: $green-1;
   font-family: 'Ubuntu', sans-serif;
   margin: 0;
   min-height: 100%;
 }
 
 .header {
-  background: $green-2;
+  background: $green-1;
   height: 100vh;
 }
 
@@ -67,7 +68,7 @@ body {
   @include absolute(top 0 right 0 bottom 0 left 0);
   @include flex-centered;
   flex-direction: column;
-  padding-top: 30px;
+  // padding-top: 10px;
 
   h1 {
     color: rgba($white, 0.95);
@@ -82,9 +83,13 @@ body {
   }
 }
 
-section {
+.content {
   margin: auto;
-  max-width: 1000px;
+  max-width: 50em;
+}
+
+section {
+  background: $white;
 
   h3 {
     font-size: 2rem;
@@ -97,8 +102,8 @@ section {
       content: '';
       display: block;
       height: 2px;
-      width: 50px;
       margin: 20px auto 0;
+      width: 50px;
     }
   }
 
@@ -106,7 +111,7 @@ section {
     font-size: 1.3rem;
     line-height: 35px;
     margin: auto;
-    max-width: 1070px;
+    // max-width: 1070px;
     padding: 10px 20px 110px;
   }
 }
