@@ -1,6 +1,11 @@
 const Store = require('electron-store');
 const { formatToday } = require('../helpers');
 const { ipcMain: ipc } = require('electron');
+const {
+  getIconInstance,
+  setNoIcon,
+  setNormalIcon,
+} = require('./menu-bar');
 
 const {
   ADD_TODO,
@@ -9,6 +14,7 @@ const {
   FETCH_POMODOROS,
   FETCH_TASKS,
   POMODORO_FINISHED,
+  POMODORO_TIME,
   TOGGLE_DONE,
 } = require('../constants');
 
@@ -58,5 +64,14 @@ ipc.on(POMODORO_FINISHED, (event) => {
   const key = `pomodoros.${formatToday()}`;
   const count = store.get(key);
   store.set(key, count + 1);
+  setNormalIcon();
   event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
+});
+
+ipc.on(POMODORO_TIME, (event, time) => {
+  const icon = getIconInstance();
+  if (icon) {
+    icon.setTitle(time);
+    setNoIcon();
+  }
 });

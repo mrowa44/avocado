@@ -7,6 +7,7 @@ import {
   FETCHED_POMODOROS,
   FETCH_POMODOROS,
   POMODORO_FINISHED,
+  POMODORO_TIME,
 } from './constants';
 import { formatToday } from './helpers';
 import './Pomodoro.css';
@@ -59,13 +60,16 @@ class Pomodoro extends Component {
       running: true,
     }, () => {
       this.timer = setInterval(this.updateTime, 1000);
+      ipc.send(POMODORO_TIME, this.formatTimeString());
     });
   }
 
   updateTime() {
     const { minutes: min, seconds: s } = this.state;
     const newTime = s === 0 ? { minutes: min - 1, seconds: 59 } : { minutes: min, seconds: s - 1 };
-    this.setState(newTime);
+    this.setState(newTime, () => {
+      ipc.send(POMODORO_TIME, this.formatTimeString());
+    });
 
     if (newTime.minutes === 0 && newTime.seconds === 0) {
       this.endTimer();
@@ -92,12 +96,17 @@ class Pomodoro extends Component {
     };
   }
 
+  formatTimeString() {
+    const { minutes, seconds } = this.state;
+    const secLablel = seconds < 10 ? `0${seconds}` : seconds;
+    return `${minutes}:${secLablel}`;
+  }
+
   render() {
     const { minutes, seconds, duration, running, pomodoros } = this.state;
     const timerClass = cx('pomodoro-timer', {
       'pomodoro-timer--running': running,
     });
-    const secLablel = seconds < 10 ? `0${seconds}` : seconds;
     const percent = 1 - ((minutes + (seconds / 60)) / duration);
 
     return (
@@ -108,7 +117,7 @@ class Pomodoro extends Component {
             style={{ width: `${percent * 100}%` }}
           />
           <div className="pomodoro-timer__text">
-            {minutes}:{secLablel}
+            {this.formatTimeString()}
           </div>
         </div>
         <div className="pomodoro-buttons">
