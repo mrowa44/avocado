@@ -65,6 +65,10 @@ ipc.on(POMODORO_FINISHED, (event) => {
   const count = store.get(key);
   store.set(key, count + 1);
   setNormalIcon();
+  const icon = getIconInstance();
+  if (icon) {
+    icon.setTitle('');
+  }
   event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
 });
 
