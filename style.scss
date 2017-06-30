@@ -13,12 +13,14 @@ $black: #000;
 html,
 body {
   background: $green-1;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'San Francisco', 'SNFS Display', BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   margin: 0;
   min-height: 100%;
 }
 
 .header {
+  @include special-font;
   background: $green-1;
   height: 100vh;
 }
@@ -155,14 +157,26 @@ section {
   }
 }
 
-footer {
+.footer {
+  @include flex-centered;
   background: $green-1;
   color: $white;
   min-height: 100px;
-  position: relative;
+  flex-direction: column;
 
   p {
-    @include absolute(top 0 right 0 bottom 0 left 0);
-    @include flex-centered;
+    font-size: 0.75rem;
+    color: rgba($white, 0.7);
+  }
+
+  &__name {
+    @include special-font;
+    margin: auto;
+    padding: 20px 0;
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba($green-3, 0.03);
+    text-transform: uppercase;
+    letter-spacing: 15px;
   }
 }

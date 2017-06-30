@@ -35,13 +35,12 @@
   border-radius: 50%;
 }
 
-
-
-
 @mixin flex-centered() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
+@mixin special-font() {
+  font-family: 'Ubuntu', sans-serif;
+}
