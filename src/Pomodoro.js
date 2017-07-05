@@ -22,7 +22,7 @@ class Pomodoro extends Component {
     const title = 'Pomodoro finished';
     const notification = new Notification(title, { // eslint-disable-line no-unused-vars
       title,
-      body: 'Take a break :)',
+      body: 'Take a break',
       silent: true,
     });
   }
