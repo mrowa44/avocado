@@ -15,6 +15,7 @@ import { formatToday } from './helpers';
 import './Pomodoro.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
+const INTERVAL_TIME = 990;
 
 class Pomodoro extends Component {
   static sendNotification() {
@@ -52,7 +53,7 @@ class Pomodoro extends Component {
         const diff = moment().diff(startTime);
         if (diff <= duration * 60 * 1000) {
           this.setTime(diff, duration);
-          this.timer = setInterval(this.updateTime, 1000);
+          this.timer = setInterval(this.updateTime, INTERVAL_TIME);
         } else {
           ipc.send(POMODORO_FINISHED);
         }
@@ -96,7 +97,7 @@ class Pomodoro extends Component {
       seconds: '00',
       running: true,
     }, () => {
-      this.timer = setInterval(this.updateTime, 1000);
+      this.timer = setInterval(this.updateTime, INTERVAL_TIME);
       ipc.send(POMODORO_TIME, `${minutes}:00`);
     });
   }
