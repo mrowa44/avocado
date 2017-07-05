@@ -3,6 +3,10 @@
 .header {
   padding: 0 5px 5px;
 
+  &.toolbar {
+    min-height: 35px;
+  }
+
   &__drag {
     padding: 17px 0;
     -webkit-app-region: drag;

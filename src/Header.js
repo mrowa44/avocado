@@ -4,6 +4,8 @@ import cx from 'classnames';
 
 import {
   ADD_TODO,
+  COLLAPSE_WINDOW,
+  EXPAND_WINDOW,
 } from './constants';
 import './Header.css';
 
@@ -26,7 +28,13 @@ class Header extends Component {
   }
 
   toggleCollapse() {
-    this.setState({ collapsed: !this.state.collapsed });
+    const isCollapsing = !this.state.collapsed;
+    this.setState({ collapsed: isCollapsing });
+    if (isCollapsing) {
+      ipc.send(COLLAPSE_WINDOW);
+    } else {
+      ipc.send(EXPAND_WINDOW);
+    }
   }
 
   addTodo(event) {

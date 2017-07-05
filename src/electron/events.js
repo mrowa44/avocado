@@ -1,4 +1,5 @@
 const Store = require('electron-store');
+
 const { formatToday } = require('../helpers');
 const { ipcMain: ipc } = require('electron');
 const {
@@ -6,9 +7,12 @@ const {
   setNoIcon,
   setNormalIcon,
 } = require('./menu-bar');
-
 const {
   ADD_TODO,
+  COLLAPSED_HEIGHT,
+  COLLAPSE_WINDOW,
+  EXPANDED_HEIGHT,
+  EXPAND_WINDOW,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
   FETCH_POMODOROS,
@@ -18,6 +22,7 @@ const {
   POMODORO_TIME,
   TOGGLE_DONE,
 } = require('../constants');
+const { getMainWindow } = require('../electron-main');
 
 const store = new Store();
 
@@ -84,4 +89,16 @@ ipc.on(POMODORO_TIME, (event, time) => {
 
 ipc.on(POMODORO_START, (event, duration, startTime) => {
   store.set('pomodoros.current', { duration, startTime });
+});
+
+ipc.on(COLLAPSE_WINDOW, () => {
+  const win = getMainWindow();
+  const oldBounds = win.getBounds();
+  win.setSize(oldBounds.width, COLLAPSED_HEIGHT, true);
+});
+
+ipc.on(EXPAND_WINDOW, () => {
+  const win = getMainWindow();
+  const oldBounds = win.getBounds();
+  win.setSize(oldBounds.width, EXPANDED_HEIGHT, true);
 });

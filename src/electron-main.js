@@ -4,9 +4,12 @@ const url = require('url');
 const Store = require('electron-store');
 const remove = require('lodash.remove');
 const { createMenuBarIcon } = require('./electron/menu-bar');
+const {
+  EXPANDED_HEIGHT,
+  WINDOW_WIDTH,
+} = require('./constants');
 
 require('electron-context-menu')();
-require('./electron/events');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,10 +19,10 @@ const isDev = process.env.NODE_ENV === 'development';
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    height: 600,
+    height: EXPANDED_HEIGHT,
     resizable: isDev,
     titleBarStyle: 'hidden-inset',
-    width: 400,
+    width: WINDOW_WIDTH,
   });
 
   const startUrl = process.env.ELECTRON_START_URL || url.format({
@@ -69,3 +72,13 @@ app.on('before-quit', () => {
   remove(tasks, task => task.done);
   store.set('tasks', tasks);
 });
+
+function getMainWindow() {
+  return mainWindow;
+}
+
+module.exports = {
+  getMainWindow,
+};
+
+require('./electron/events');
