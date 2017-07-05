@@ -7,8 +7,10 @@ $black: #000;
 
 $red: #ed5a5a;
 $pear: #D7EA46;
-$light-green: #81FBB8;
-$green: #28C76F;
+$green: #7FE063;
+$light-green: lighten($green, 13%);
+// $light-green: #81FBB8;
+// $green: #28C76F;
 $blue: #6db3fd;
 $indigo: #0479FF;
 $violet: #5856D5;
