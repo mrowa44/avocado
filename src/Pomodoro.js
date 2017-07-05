@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
+import moment from 'moment';
 
 import Button from './Button';
 import Bullets from './Bullets';
@@ -7,6 +8,7 @@ import {
   FETCHED_POMODOROS,
   FETCH_POMODOROS,
   POMODORO_FINISHED,
+  POMODORO_START,
   POMODORO_TIME,
 } from './constants';
 import { formatToday } from './helpers';
@@ -28,10 +30,11 @@ class Pomodoro extends Component {
     super();
     this.updateTime = this.updateTime.bind(this);
     this.state = {
+      startTime: null,
       duration: 0,
       minutes: 0,
-      running: false,
       seconds: 0,
+      running: false,
       pomodoros: {
         done: 0,
         goal: 0,
@@ -42,10 +45,27 @@ class Pomodoro extends Component {
   componentDidMount() {
     ipc.send(FETCH_POMODOROS);
     ipc.on(FETCHED_POMODOROS, (event, pomodoros) => {
-      this.setState({ pomodoros: {
-        done: pomodoros[formatToday()],
-        goal: pomodoros.goal,
-      } });
+      const current = pomodoros.current;
+      const startTime = current && moment(current.startTime);
+      const duration = current && current.duration;
+      if (startTime && duration) {
+        const diff = moment().diff(startTime);
+        if (diff <= duration * 60 * 1000) {
+          this.setTime(diff, duration);
+          this.timer = setInterval(this.updateTime, 1000);
+        } else {
+          ipc.send(POMODORO_FINISHED);
+        }
+      }
+      this.setState({
+        pomodoros: {
+          done: pomodoros[formatToday()],
+          goal: pomodoros.goal,
+        },
+        startTime,
+        duration,
+        running: !!current,
+      });
     });
   }
 
@@ -53,26 +73,41 @@ class Pomodoro extends Component {
     ipc.removeAllListeners(FETCHED_POMODOROS);
   }
 
-  startTimer(minutes) {
+  setTime(timePassed, duration) {
+    const left = (duration * 60 * 1000) - timePassed;
+    const time = moment.duration(left, 'milliseconds');
+    const minutes = Math.floor(time.asMinutes());
+    const seconds = Math.floor(time.asSeconds() % 60);
+    const secString = seconds < 10 ? `0${seconds}` : seconds;
     this.setState({
+      minutes,
+      seconds: secString,
+    });
+    ipc.send(POMODORO_TIME, `${minutes}:${secString}`);
+  }
+
+  startTimer(minutes) {
+    const startTime = moment();
+    ipc.send(POMODORO_START, minutes, startTime.format());
+    this.setState({
+      startTime,
       duration: minutes,
       minutes,
+      seconds: '00',
       running: true,
     }, () => {
       this.timer = setInterval(this.updateTime, 1000);
-      ipc.send(POMODORO_TIME, this.formatTimeString());
+      ipc.send(POMODORO_TIME, `${minutes}:00`);
     });
   }
 
   updateTime() {
-    const { minutes: min, seconds: s } = this.state;
-    const newTime = s === 0 ? { minutes: min - 1, seconds: 59 } : { minutes: min, seconds: s - 1 };
-    this.setState(newTime, () => {
-      ipc.send(POMODORO_TIME, this.formatTimeString());
-    });
-
-    if (newTime.minutes === 0 && newTime.seconds === 0) {
+    const { startTime, duration } = this.state;
+    const timePassed = moment().diff(startTime);
+    if (timePassed >= duration * 60 * 1000) {
       this.endTimer();
+    } else {
+      this.setTime(timePassed, duration);
     }
   }
 
@@ -82,24 +117,17 @@ class Pomodoro extends Component {
       clearInterval(this.timer);
     }
     this.setState({
+      startTime: null,
       duration: 0,
       minutes: 0,
-      running: false,
       seconds: 0,
+      running: false,
     });
     ipc.send(POMODORO_FINISHED);
   }
 
   handleButtonClick(minutes) {
-    return () => {
-      this.startTimer(minutes);
-    };
-  }
-
-  formatTimeString() {
-    const { minutes, seconds } = this.state;
-    const secLablel = seconds < 10 ? `0${seconds}` : seconds;
-    return `${minutes}:${secLablel}`;
+    return () => { this.startTimer(minutes); };
   }
 
   render() {
@@ -117,7 +145,7 @@ class Pomodoro extends Component {
             style={{ width: `${percent * 100}%` }}
           />
           <div className="pomodoro-timer__text">
-            {this.formatTimeString()}
+            {minutes}:{seconds}
           </div>
         </div>
         <div className="pomodoro-buttons">
