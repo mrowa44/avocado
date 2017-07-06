@@ -45,6 +45,6 @@
     <key>NSHumanReadableCopyright</key>
     <string>Copyright © 2017 Justyna Rachowicz</string>
     <key>AsarIntegrity</key>
-    <string>{"checksums":{"app.asar":"RhTg0c1ZXqya3zLQBS64L/xR8CSqKBe+5k1TTAXDSzNkCQ7+BGEY5i7CuXlyXShrkj96hXdEak5BkUXhS48s1g==","electron.asar":"E0VzOFDGl10vUSrbYHZmEmLZx1jQKCUPWF+JLngj8lbgihQCML3iAz2ITqK1UhrYEV5lm/xLrs7h8RgAD0pgpw=="}}</string>
+    <string>{"checksums":{"app.asar":"Te+yCPw40eKEhYPl+TA5cRlhOPLmRh8jjcBzy4ZTpqWSmLziJE8PnY1IxwWgGmcQBaeC4LhwdCNG4kVJmreyVA==","electron.asar":"E0VzOFDGl10vUSrbYHZmEmLZx1jQKCUPWF+JLngj8lbgihQCML3iAz2ITqK1UhrYEV5lm/xLrs7h8RgAD0pgpw=="}}</string>
   </dict>
 </plist>
