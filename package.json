@@ -49,6 +49,9 @@
     ],
     "directories":{
       "buildResources": "assets"
+    },
+    "mac": {
+      "icon": "build/icon.icns"
     }
   },
   "scripts": {

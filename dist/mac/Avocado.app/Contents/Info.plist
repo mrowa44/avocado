@@ -9,7 +9,7 @@
     <key>CFBundleExecutable</key>
     <string>Avocado</string>
     <key>CFBundleIconFile</key>
-    <string>electron.icns</string>
+    <string>Avocado.icns</string>
     <key>CFBundleIdentifier</key>
     <string>com.example.electron-cra</string>
     <key>CFBundleInfoDictionaryVersion</key>
@@ -45,6 +45,6 @@
     <key>NSHumanReadableCopyright</key>
     <string>Copyright © 2017 Justyna Rachowicz</string>
     <key>AsarIntegrity</key>
-    <string>{"checksums":{"app.asar":"Te+yCPw40eKEhYPl+TA5cRlhOPLmRh8jjcBzy4ZTpqWSmLziJE8PnY1IxwWgGmcQBaeC4LhwdCNG4kVJmreyVA==","electron.asar":"E0VzOFDGl10vUSrbYHZmEmLZx1jQKCUPWF+JLngj8lbgihQCML3iAz2ITqK1UhrYEV5lm/xLrs7h8RgAD0pgpw=="}}</string>
+    <string>{"checksums":{"app.asar":"ODrpHkkeaw8zD9qF+2hS8XeF4zy9knJtk/aUlZN9Xj4tn+Fmt2xIFox3fJyJ/PDPTOCh9WI7Vveg/vvOkyy/1w==","electron.asar":"E0VzOFDGl10vUSrbYHZmEmLZx1jQKCUPWF+JLngj8lbgihQCML3iAz2ITqK1UhrYEV5lm/xLrs7h8RgAD0pgpw=="}}</string>
   </dict>
 </plist>
