@@ -22,7 +22,7 @@ const {
   POMODORO_TIME,
   TOGGLE_DONE,
 } = require('../constants');
-const { getMainWindow } = require('../electron-main');
+const { getMainWindow } = require('../electron');
 
 const store = new Store();
 
