@@ -15,5 +15,6 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'import/prefer-default-export': 0,
     'no-case-declarations': 1,
+    'import/no-extraneous-dependencies': 1, // can't build with it
   },
 };
