@@ -25,6 +25,9 @@ class Header extends Component {
     Mousetrap.bind('command+l', () => {
       this.input.focus();
     });
+    Mousetrap.bind('esc', () => {
+      this.input.blur();
+    });
   }
 
   toggleCollapse() {
@@ -56,7 +59,7 @@ class Header extends Component {
         <div className="toolbar-actions">
           <form onSubmit={this.addTodo}>
             <input
-              className="form-control"
+              className="form-control mousetrap"
               type="text"
               placeholder="+ Add a task"
               ref={(node) => { this.input = node; }}
