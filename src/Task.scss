@@ -4,6 +4,14 @@
   display: flex;
   align-items: center;
 
+  &--active {
+    background: $blue-hl;
+  }
+
+  &--active &__text {
+    color: $white;
+  }
+
   input[type='checkbox'] {
     margin: -2px 10px 0 5px;
   }

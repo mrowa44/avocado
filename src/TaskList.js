@@ -12,8 +12,10 @@ const { ipcRenderer: ipc } = window.require('electron');
 class TaskList extends Component {
   constructor() {
     super();
+    this.setActive = this.setActive.bind(this);
     this.state = {
       tasks: [],
+      activeId: null,
     };
   }
 
@@ -28,10 +30,21 @@ class TaskList extends Component {
     ipc.removeAllListeners(FETCHED_TASKS);
   }
 
+  setActive(id) {
+    this.setState({ activeId: id });
+  }
+
   render() {
     return (
       <ul className="task-list list-group">
-        { this.state.tasks.map(task => <Task {...task} key={task.id} />) }
+        { this.state.tasks.map(task => (
+          <Task
+            {...task}
+            key={task.id}
+            active={task.id === this.state.activeId}
+            setActive={this.setActive}
+          />),
+        ) }
       </ul>
     );
   }
