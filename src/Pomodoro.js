@@ -130,6 +130,9 @@ class Pomodoro extends Component {
   }
 
   stopTimer() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
     this.setState({
       startTime: null,
       duration: 0,

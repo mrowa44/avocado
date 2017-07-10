@@ -55,6 +55,7 @@ module.exports = {
   setNormalIcon() {
     if (icon) {
       icon.setImage(iconPath);
+      icon.setTitle('');
     }
   },
 };
