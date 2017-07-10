@@ -3,7 +3,6 @@
 .task {
   display: flex;
   align-items: center;
-  user-select: auto;
 
   input[type='checkbox'] {
     margin: -2px 10px 0 5px;
@@ -11,5 +10,6 @@
 
   &__text {
     max-width: 90%;
+    user-select: auto;
   }
 }
