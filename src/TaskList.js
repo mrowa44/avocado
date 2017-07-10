@@ -25,7 +25,10 @@ class TaskList extends Component {
   componentDidMount() {
     ipc.send(FETCH_TASKS);
     ipc.on(FETCHED_TASKS, (event, tasks) => {
-      this.setState({ tasks });
+      this.setState({
+        tasks,
+        activeId: tasks[0].id,
+      });
     });
 
     Mousetrap.bind('command+j', this.setActiveDown);
