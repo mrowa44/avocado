@@ -57,7 +57,6 @@ class TaskList extends Component {
     const prevActiveIndex = activeIndex - 1;
     const prevActiveId = ids[prevActiveIndex];
     if (prevActiveIndex < 0) {
-      console.log(prevActiveIndex);
       this.setActive(ids[ids.length - 1]);
     } else {
       this.setActive(prevActiveId);
