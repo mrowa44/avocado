@@ -35,6 +35,9 @@
 
     &__text {
       z-index: $idx-1;
+      background: none;
+      border: 0;
+      outline: none;
     }
   }
 

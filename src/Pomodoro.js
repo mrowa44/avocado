@@ -9,6 +9,7 @@ import {
   FETCH_POMODOROS,
   POMODORO_FINISHED,
   POMODORO_START,
+  POMODORO_STOP,
   POMODORO_TIME,
 } from './constants';
 import { formatToday } from './helpers';
@@ -30,6 +31,7 @@ class Pomodoro extends Component {
   constructor() {
     super();
     this.updateTime = this.updateTime.bind(this);
+    this.stopTimer = this.stopTimer.bind(this);
     this.state = {
       startTime: null,
       duration: 0,
@@ -127,6 +129,17 @@ class Pomodoro extends Component {
     ipc.send(POMODORO_FINISHED);
   }
 
+  stopTimer() {
+    this.setState({
+      startTime: null,
+      duration: 0,
+      minutes: 0,
+      seconds: 0,
+      running: false,
+    });
+    ipc.send(POMODORO_STOP);
+  }
+
   handleButtonClick(minutes) {
     return () => { this.startTimer(minutes); };
   }
@@ -145,9 +158,9 @@ class Pomodoro extends Component {
             className="pomodoro-timer__bg"
             style={{ width: `${percent * 100}%` }}
           />
-          <div className="pomodoro-timer__text">
+          <button className="pomodoro-timer__text" onClick={this.stopTimer}>
             {minutes}:{seconds}
-          </div>
+          </button>
         </div>
         <div className="pomodoro-buttons">
           <Button text="15 min" onClick={this.handleButtonClick(1)} />

@@ -19,6 +19,7 @@ const {
   FETCH_TASKS,
   POMODORO_FINISHED,
   POMODORO_START,
+  POMODORO_STOP,
   POMODORO_TIME,
   TOGGLE_DONE,
 } = require('../constants');
@@ -70,6 +71,16 @@ ipc.on(POMODORO_FINISHED, (event) => {
   const key = `pomodoros.${formatToday()}`;
   const count = store.get(key);
   store.set(key, count + 1);
+  store.set('pomodoros.current', null);
+  setNormalIcon();
+  const icon = getIconInstance();
+  if (icon) {
+    icon.setTitle('');
+  }
+  event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
+});
+
+ipc.on(POMODORO_STOP, (event) => {
   store.set('pomodoros.current', null);
   setNormalIcon();
   const icon = getIconInstance();
