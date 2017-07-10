@@ -17,6 +17,12 @@ class Task extends Component {
     this.setActive = this.setActive.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.active && nextProps.active !== this.props.active && this.node) {
+      this.node.scrollIntoViewIfNeeded();
+    }
+  }
+
   setActive() {
     this.props.setActive(this.props.id);
   }
@@ -31,7 +37,12 @@ class Task extends Component {
     });
 
     return (
-      <li className={className} onClick={this.setActive} role="presentation">
+      <li
+        className={className}
+        onClick={this.setActive}
+        role="presentation"
+        ref={(node) => { this.node = node; }}
+      >
         <input
           type="checkbox"
           checked={this.props.done}
