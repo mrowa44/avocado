@@ -16,6 +16,7 @@ class TaskList extends Component {
     this.setActive = this.setActive.bind(this);
     this.setActiveDown = this.setActiveDown.bind(this);
     this.setActiveUp = this.setActiveUp.bind(this);
+    this.setNoneActive = this.setNoneActive.bind(this);
     this.state = {
       tasks: [],
       activeId: null,
@@ -25,10 +26,7 @@ class TaskList extends Component {
   componentDidMount() {
     ipc.send(FETCH_TASKS);
     ipc.on(FETCHED_TASKS, (event, tasks) => {
-      this.setState({
-        tasks,
-        activeId: tasks[0].id,
-      });
+      this.setState({ tasks });
     });
 
     Mousetrap.bind('command+j', this.setActiveDown);
@@ -65,13 +63,19 @@ class TaskList extends Component {
     }
   }
 
+  setNoneActive(event) {
+    if (event.target.classList.contains('task-list')) {
+      this.setState({ activeId: null });
+    }
+  }
+
   setActive(id) {
     this.setState({ activeId: id });
   }
 
   render() {
     return (
-      <ul className="task-list list-group">
+      <ul className="task-list list-group" onClick={this.setNoneActive} role="button">
         { this.state.tasks.map(task => (
           <Task
             {...task}

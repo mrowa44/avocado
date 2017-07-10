@@ -16,5 +16,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-case-declarations': 1,
     'import/no-extraneous-dependencies': 1, // can't build with it
+    'jsx-a11y/no-redundant-roles': 1,
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': 1,
   },
 };
