@@ -40,10 +40,9 @@ class TaskList extends Component {
     const { tasks, activeId } = this.state;
     const ids = tasks.map(t => t.id);
     const activeIndex = ids.indexOf(activeId);
-    const maxIndex = ids[ids.length - 1];
     const nextActiveIndex = activeIndex + 1;
     const nextActiveId = ids[nextActiveIndex];
-    if (nextActiveIndex >= maxIndex) {
+    if (nextActiveIndex >= ids.length) {
       this.setActive(ids[0]);
     } else {
       this.setActive(nextActiveId);
