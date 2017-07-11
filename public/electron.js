@@ -21,6 +21,9 @@ function createWindow() {
     resizable: isDev,
     titleBarStyle: 'hidden-inset',
     width: WINDOW_WIDTH,
+    fullscreen: false,
+    fullscreenable: false,
+    title: 'Avocado',
   });
 
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
@@ -30,6 +33,7 @@ function createWindow() {
   createMenuBarIcon();
 }
 
+app.commandLine.appendSwitch('disable-renderer-backgrounding'); // must be before app.on('ready');
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
