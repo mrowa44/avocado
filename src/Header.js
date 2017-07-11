@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
 import cx from 'classnames';
+import moment from 'moment';
 
 import {
   ADD_TODO,
   COLLAPSE_WINDOW,
   EXPAND_WINDOW,
+  POMODORO_START,
 } from './constants';
 import './Header.css';
 
@@ -43,8 +45,14 @@ class Header extends Component {
   addTodo(event) {
     event.preventDefault();
     const input = this.input;
-    if (input.value !== '') {
-      ipc.send(ADD_TODO, input.value);
+    const value = input.value;
+    const num = Number(value);
+    if (value !== '' && Number.isInteger(num) && num > 0) {
+      ipc.send(POMODORO_START, num, moment().format());
+      input.value = '';
+      input.blur();
+    } else if (value !== '') {
+      ipc.send(ADD_TODO, value);
       input.value = '';
     }
   }

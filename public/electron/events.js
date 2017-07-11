@@ -92,6 +92,7 @@ ipc.on(POMODORO_TIME, (event, time) => {
 
 ipc.on(POMODORO_START, (event, duration, startTime) => {
   store.set('pomodoros.current', { duration, startTime });
+  event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
 });
 
 ipc.on(COLLAPSE_WINDOW, () => {
