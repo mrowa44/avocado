@@ -86,7 +86,9 @@ class Pomodoro extends Component {
       minutes,
       seconds: secString,
     });
-    ipc.send(POMODORO_TIME, `${minutes}:${secString}`);
+    if (!isNaN(minutes) && !isNaN(seconds)) {
+      ipc.send(POMODORO_TIME, `${minutes}:${secString}`);
+    }
   }
 
   startTimer(minutes) {
@@ -119,13 +121,7 @@ class Pomodoro extends Component {
     if (this.timer) {
       clearInterval(this.timer);
     }
-    this.setState({
-      startTime: null,
-      duration: 0,
-      minutes: 0,
-      seconds: 0,
-      running: false,
-    });
+    this.setState({ startTime: null, running: false });
     ipc.send(POMODORO_FINISHED);
   }
 
@@ -133,13 +129,7 @@ class Pomodoro extends Component {
     if (this.timer) {
       clearInterval(this.timer);
     }
-    this.setState({
-      startTime: null,
-      duration: 0,
-      minutes: 0,
-      seconds: 0,
-      running: false,
-    });
+    this.setState({ startTime: null, running: false });
     ipc.send(POMODORO_STOP);
   }
 
