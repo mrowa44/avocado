@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Mousetrap from 'mousetrap';
 
 import {
@@ -6,6 +7,7 @@ import {
   FETCH_TASKS,
 } from './constants';
 import Task from './Task';
+import Focus from './Focus';
 import './TaskList.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
@@ -76,6 +78,7 @@ class TaskList extends Component {
   render() {
     return (
       <ul className="task-list list-group" onClick={this.setNoneActive} role="button">
+        { this.props.isFocus && this.props.focusComponent }
         { this.state.tasks.map(task => (
           <Task
             {...task}
@@ -89,4 +92,9 @@ class TaskList extends Component {
   }
 }
 
-export default TaskList;
+TaskList.propTypes = {
+  focusComponent: PropTypes.element, // eslint-disable-line react/require-default-props
+  isFocus: PropTypes.bool.isRequired,
+};
+
+export default Focus(TaskList);

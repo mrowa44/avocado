@@ -5,6 +5,7 @@ import cx from 'classnames';
 import './Task.css';
 
 const {
+  SET_FOCUS,
   TOGGLE_DONE,
 } = require('./constants');
 
@@ -25,6 +26,15 @@ class Task extends Component {
 
   setActive() {
     this.props.setActive(this.props.id);
+    this.setToFocus();
+  }
+
+  setToFocus() {
+    ipc.send(SET_FOCUS, {
+      id: this.props.id,
+      done: this.props.done,
+      text: this.props.text,
+    });
   }
 
   toggleDone() {

@@ -11,16 +11,21 @@ const {
   ADD_TODO,
   COLLAPSED_HEIGHT,
   COLLAPSE_WINDOW,
+  COMPLETE_FOCUS_TASK,
   EXPANDED_HEIGHT,
   EXPAND_WINDOW,
+  FETCHED_FOCUS,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
+  FETCH_FOCUS,
   FETCH_POMODOROS,
   FETCH_TASKS,
+  GIVE_UP_FOCUS,
   POMODORO_FINISHED,
   POMODORO_START,
   POMODORO_STOP,
   POMODORO_TIME,
+  SET_FOCUS,
   TOGGLE_DONE,
 } = require('../constants');
 const { getMainWindow } = require('../electron');
@@ -57,7 +62,7 @@ ipc.on(TOGGLE_DONE, (event, taskId) => {
 
 ipc.on(FETCH_POMODOROS, (event) => {
   if (!store.get('pomodoros')) {
-    store.set('pomodoros', { goal: 6 });
+    store.set('pomodoros', { goal: 6, current: null });
   }
 
   const today = formatToday();
@@ -105,4 +110,33 @@ ipc.on(EXPAND_WINDOW, () => {
   const win = getMainWindow();
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, EXPANDED_HEIGHT, true);
+});
+
+ipc.on(SET_FOCUS, (event, task) => {
+  store.set('focus', task);
+  event.sender.send(FETCHED_FOCUS, store.get('focus'));
+});
+
+ipc.on(FETCH_FOCUS, (event) => {
+  event.sender.send(FETCHED_FOCUS, store.get('focus'));
+});
+
+ipc.on(COMPLETE_FOCUS_TASK, (event) => {
+  const tasks = store.get('tasks');
+  const focus = store.get('focus');
+  const task = tasks.find(t => t.id === focus.id);
+  const idx = tasks.indexOf(task);
+
+  const toggledTask = Object.assign(task, { done: !task.done });
+  const newTasks = Object.assign(tasks.slice(), { [idx]: toggledTask });
+
+  store.set('tasks', newTasks);
+  store.set('focus', null);
+  event.sender.send(FETCHED_TASKS, store.get('tasks'));
+  event.sender.send(FETCHED_FOCUS, store.get('focus'));
+});
+
+ipc.on(GIVE_UP_FOCUS, (event) => {
+  store.set('focus', null);
+  event.sender.send(FETCHED_FOCUS, store.get('focus'));
 });
