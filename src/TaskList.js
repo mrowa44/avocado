@@ -5,6 +5,7 @@ import Mousetrap from 'mousetrap';
 import {
   FETCHED_TASKS,
   FETCH_TASKS,
+  SET_FOCUS,
 } from './constants';
 import Task from './Task';
 import Focus from './Focus';
@@ -19,6 +20,7 @@ class TaskList extends Component {
     this.setActiveDown = this.setActiveDown.bind(this);
     this.setActiveUp = this.setActiveUp.bind(this);
     this.setNoneActive = this.setNoneActive.bind(this);
+    this.setToFocus = this.setToFocus.bind(this);
     this.state = {
       tasks: [],
       activeId: null,
@@ -33,6 +35,7 @@ class TaskList extends Component {
 
     Mousetrap.bind('command+j', this.setActiveDown);
     Mousetrap.bind('command+k', this.setActiveUp);
+    Mousetrap.bind('command+f', this.setToFocus);
   }
 
   componentWillUnmount() {
@@ -73,6 +76,16 @@ class TaskList extends Component {
 
   setActive(id) {
     this.setState({ activeId: id });
+  }
+
+  setToFocus() {
+    const activeId = this.state.activeId;
+    if (activeId) {
+      const task = this.state.tasks.find(t => t.id === activeId);
+      if (!task.done) {
+        ipc.send(SET_FOCUS, task);
+      }
+    }
   }
 
   render() {
