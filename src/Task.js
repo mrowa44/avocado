@@ -32,8 +32,10 @@ class Task extends Component {
   }
 
   render() {
+    const isFocus = this.props.isFocus;
     const className = cx('task', 'list-group-item', {
       'task--active': this.props.active,
+      'task--focus': isFocus,
     });
 
     return (
@@ -51,7 +53,7 @@ class Task extends Component {
         <div className="task__text">
           {this.props.text}
         </div>
-        {this.props.isFocus && <span className="task__focus">F</span>}
+        {isFocus && <span className="task__focus">F</span>}
       </li>
     );
   }

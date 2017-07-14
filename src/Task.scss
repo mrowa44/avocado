@@ -26,6 +26,10 @@
     user-select: auto;
   }
 
+  &--focus &__text {
+    font-weight: bold;
+  }
+
   .list-group &__focus {
     margin-right: 10px;
     margin-left: auto;

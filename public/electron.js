@@ -1,8 +1,12 @@
-const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const Store = require('electron-store');
 const remove = require('lodash.remove');
 const isDev = require('electron-is-dev');
+const {
+  app,
+  BrowserWindow,
+} = require('electron');
+
 const {
   createMenuActions,
   createMenuBarIcon,
