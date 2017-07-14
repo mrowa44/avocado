@@ -7,6 +7,8 @@ import {
   ADD_TODO,
   COLLAPSE_WINDOW,
   EXPAND_WINDOW,
+  FETCHED_COLLAPSE,
+  FETCH_COLLAPSE,
   POMODORO_START,
 } from './constants';
 import './Header.css';
@@ -24,6 +26,10 @@ class Header extends Component {
   }
 
   componentDidMount() {
+    ipc.send(FETCH_COLLAPSE);
+    ipc.on(FETCHED_COLLAPSE, (event, collapsed) => {
+      this.setState({ collapsed });
+    });
     Mousetrap.bind('command+l', () => {
       this.input.focus();
     });

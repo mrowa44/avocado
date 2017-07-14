@@ -13,9 +13,11 @@ const {
   COLLAPSE_WINDOW,
   COMPLETE_FOCUS_TASK,
   EXPAND_WINDOW,
+  FETCHED_COLLAPSE,
   FETCHED_FOCUS,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
+  FETCH_COLLAPSE,
   FETCH_FOCUS,
   FETCH_POMODOROS,
   FETCH_TASKS,
@@ -33,6 +35,18 @@ const {
 } = require('../electron');
 
 const store = new Store();
+
+function collapseWindow(event) {
+  setWindowHeight(COLLAPSED_HEIGHT);
+  store.set('windowCollapsed', true);
+  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
+}
+
+function expandWindow(event) {
+  setNormalWindowHeight();
+  store.set('windowCollapsed', false);
+  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
+}
 
 ipc.on(FETCH_TASKS, (event) => {
   if (!store.get('tasks')) {
@@ -107,23 +121,25 @@ ipc.on(POMODORO_START, (event, duration, startTime) => {
   store.set('pomodoros.current', { duration, startTime });
   event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
   if (store.get('focus')) {
-    setWindowHeight(COLLAPSED_HEIGHT);
+    collapseWindow(event);
   }
 });
 
-ipc.on(COLLAPSE_WINDOW, () => {
-  setWindowHeight(COLLAPSED_HEIGHT);
+ipc.on(COLLAPSE_WINDOW, (event) => { collapseWindow(event); });
+
+ipc.on(EXPAND_WINDOW, (event) => {
+  expandWindow(event);
 });
 
-ipc.on(EXPAND_WINDOW, () => {
-  setNormalWindowHeight();
+ipc.on(FETCH_COLLAPSE, (event) => {
+  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
 });
 
 ipc.on(SET_FOCUS, (event, task) => {
   store.set('focus', task);
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
   if (store.get('pomodoros.current')) {
-    setWindowHeight(COLLAPSED_HEIGHT);
+    collapseWindow(event);
   }
 });
 
@@ -144,11 +160,11 @@ ipc.on(COMPLETE_FOCUS_TASK, (event) => {
   store.set('focus', null);
   event.sender.send(FETCHED_TASKS, store.get('tasks'));
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
-  setNormalWindowHeight();
+  expandWindow(event);
 });
 
 ipc.on(GIVE_UP_FOCUS, (event) => {
   store.set('focus', null);
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
-  setNormalWindowHeight();
+  expandWindow(event);
 });
