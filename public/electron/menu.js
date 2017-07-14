@@ -2,10 +2,11 @@ const path = require('path');
 const electron = require('electron');
 const {
   Menu,
-  MenuItem,
   Tray,
   nativeImage,
 } = require('electron');
+
+const { openSettings } = require('./actions');
 
 let icon;
 const emptyIcon = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
@@ -73,6 +74,12 @@ module.exports = {
         label: name,
         submenu: [
           { role: 'about' },
+          { type: 'separator' },
+          {
+            label: 'Preferences...',
+            accelerator: 'Cmd+,',
+            click: openSettings,
+          },
           { type: 'separator' },
           {
             role: 'services',
