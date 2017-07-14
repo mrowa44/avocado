@@ -3,7 +3,10 @@ const path = require('path');
 const Store = require('electron-store');
 const remove = require('lodash.remove');
 const isDev = require('electron-is-dev');
-const { createMenuBarIcon } = require('./electron/menu-bar');
+const {
+  createMenuActions,
+  createMenuBarIcon,
+} = require('./electron/menu');
 const {
   COLLAPSED_HEIGHT,
   EXPANDED_HEIGHT,
@@ -33,6 +36,7 @@ function createWindow() {
 
   mainWindow.on('closed', () => { mainWindow = null; });
   createMenuBarIcon();
+  createMenuActions();
 }
 
 app.commandLine.appendSwitch('disable-renderer-backgrounding'); // must be before app.on('ready');

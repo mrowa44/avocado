@@ -6,7 +6,7 @@ const {
   getIconInstance,
   setNoIcon,
   setNormalIcon,
-} = require('./menu-bar');
+} = require('./menu');
 const {
   ADD_TODO,
   COLLAPSED_HEIGHT,
