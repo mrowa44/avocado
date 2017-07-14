@@ -10,20 +10,20 @@ const {
 
 const store = new Store();
 
-function collapseWindow(event) {
+function collapseWindow() {
   const win = BrowserWindow.getFocusedWindow();
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, COLLAPSED_HEIGHT, true);
   store.set('windowCollapsed', true);
-  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
+  win.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
 }
 
-function expandWindow(event) {
+function expandWindow() {
   const win = BrowserWindow.getFocusedWindow();
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, EXPANDED_HEIGHT, true);
   store.set('windowCollapsed', false);
-  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
+  win.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
 }
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
     store.set('pomodoros.current', { duration, startTime });
     eventSender.send(FETCHED_POMODOROS, store.get('pomodoros'));
     if (store.get('focus')) {
-      collapseWindow(event);
+      collapseWindow();
     }
   },
 };
