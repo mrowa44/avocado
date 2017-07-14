@@ -12,7 +12,6 @@ const {
   COLLAPSED_HEIGHT,
   COLLAPSE_WINDOW,
   COMPLETE_FOCUS_TASK,
-  EXPANDED_HEIGHT,
   EXPAND_WINDOW,
   FETCHED_FOCUS,
   FETCHED_POMODOROS,
@@ -28,7 +27,10 @@ const {
   SET_FOCUS,
   TOGGLE_DONE,
 } = require('../constants');
-const { getMainWindow } = require('../electron');
+const {
+  setNormalWindowHeight,
+  setWindowHeight,
+} = require('../electron');
 
 const store = new Store();
 
@@ -101,20 +103,17 @@ ipc.on(POMODORO_START, (event, duration, startTime) => {
 });
 
 ipc.on(COLLAPSE_WINDOW, () => {
-  const win = getMainWindow();
-  const oldBounds = win.getBounds();
-  win.setSize(oldBounds.width, COLLAPSED_HEIGHT, true);
+  setWindowHeight(COLLAPSED_HEIGHT);
 });
 
 ipc.on(EXPAND_WINDOW, () => {
-  const win = getMainWindow();
-  const oldBounds = win.getBounds();
-  win.setSize(oldBounds.width, EXPANDED_HEIGHT, true);
+  setNormalWindowHeight();
 });
 
 ipc.on(SET_FOCUS, (event, task) => {
   store.set('focus', task);
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
+  setWindowHeight(250);
 });
 
 ipc.on(FETCH_FOCUS, (event) => {
@@ -134,9 +133,11 @@ ipc.on(COMPLETE_FOCUS_TASK, (event) => {
   store.set('focus', null);
   event.sender.send(FETCHED_TASKS, store.get('tasks'));
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
+  setNormalWindowHeight();
 });
 
 ipc.on(GIVE_UP_FOCUS, (event) => {
   store.set('focus', null);
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
+  setNormalWindowHeight();
 });

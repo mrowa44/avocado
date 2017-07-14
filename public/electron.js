@@ -61,6 +61,16 @@ function getMainWindow() {
 
 module.exports = {
   getMainWindow,
+  setNormalWindowHeight() {
+    const win = getMainWindow();
+    const oldBounds = win.getBounds();
+    win.setSize(oldBounds.width, EXPANDED_HEIGHT, true);
+  },
+  setWindowHeight(h) {
+    const win = getMainWindow();
+    const oldBounds = win.getBounds();
+    win.setSize(oldBounds.width, h, true);
+  },
 };
 
 require('./electron/events');
