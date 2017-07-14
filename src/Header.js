@@ -75,7 +75,7 @@ class Header extends Component {
             <input
               className="form-control mousetrap"
               type="text"
-              placeholder="+ Add a task"
+              placeholder="+ Add a task or start timer"
               ref={(node) => { this.input = node; }}
             />
           </form>
