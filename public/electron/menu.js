@@ -1,51 +1,44 @@
 const path = require('path');
 const electron = require('electron');
+const moment = require('moment');
 const {
+  BrowserWindow,
   Menu,
   Tray,
   nativeImage,
 } = require('electron');
 
-const { openSettings } = require('./actions');
+const {
+  openSettings,
+  startPomodoro,
+} = require('./actions');
 
 let icon;
 const emptyIcon = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 const iconPath = path.join(__dirname, '../icon.png');
 
+function createPomodoro(time) {
+  return () => {
+    const win = BrowserWindow.getAllWindows()[0];
+    startPomodoro(win.webContents, time, moment().format());
+  };
+}
+
 module.exports = {
   createMenuBarIcon(text = '') {
     icon = new Tray(iconPath);
     const contextMenu = Menu.buildFromTemplate([
-      {
-        label: 'Item1',
-        type: 'normal',
-        click: () => {
-          console.log('wow');
-        },
-      },
-      {
-        label: 'Item1',
-        type: 'normal',
-        click: () => {
-          console.log('wow');
-        },
-      },
-      {
-        label: 'Item1',
-        type: 'normal',
-        click: () => {
-          console.log('wow');
-        },
-      },
-      {
-        label: 'Item1',
-        type: 'normal',
-        click: () => {
-          console.log('wow');
-        },
-      },
+      { label: '15 min', click: createPomodoro(15) },
+      { label: '20 min', click: createPomodoro(20) },
+      { label: '25 min', click: createPomodoro(25) },
+      { label: '30 min', click: createPomodoro(30) },
+      { label: '35 min', click: createPomodoro(35) },
+      { label: '40 min', click: createPomodoro(40) },
+      { label: '45 min', click: createPomodoro(45) },
+      { label: '50 min', click: createPomodoro(50) },
+      { label: '55 min', click: createPomodoro(55) },
+      { label: '60 min', click: createPomodoro(60) },
     ]);
-
     icon.setToolTip('Avocado');
     icon.setContextMenu(contextMenu);
     icon.setTitle(text);

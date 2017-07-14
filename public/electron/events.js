@@ -9,7 +9,6 @@ const {
 } = require('./menu');
 const {
   ADD_TODO,
-  COLLAPSED_HEIGHT,
   COLLAPSE_WINDOW,
   COMPLETE_FOCUS_TASK,
   EXPAND_WINDOW,
@@ -30,23 +29,12 @@ const {
   TOGGLE_DONE,
 } = require('../constants');
 const {
-  setNormalWindowHeight,
-  setWindowHeight,
-} = require('../electron');
+  collapseWindow,
+  expandWindow,
+  startPomodoro,
+} = require('./actions');
 
 const store = new Store();
-
-function collapseWindow(event) {
-  setWindowHeight(COLLAPSED_HEIGHT);
-  store.set('windowCollapsed', true);
-  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
-}
-
-function expandWindow(event) {
-  setNormalWindowHeight();
-  store.set('windowCollapsed', false);
-  event.sender.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
-}
 
 ipc.on(FETCH_TASKS, (event) => {
   if (!store.get('tasks')) {
@@ -118,11 +106,7 @@ ipc.on(POMODORO_TIME, (event, time) => {
 });
 
 ipc.on(POMODORO_START, (event, duration, startTime) => {
-  store.set('pomodoros.current', { duration, startTime });
-  event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
-  if (store.get('focus')) {
-    collapseWindow(event);
-  }
+  startPomodoro(event.sender, duration, startTime);
 });
 
 ipc.on(COLLAPSE_WINDOW, (event) => { collapseWindow(event); });
