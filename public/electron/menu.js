@@ -113,17 +113,9 @@ module.exports = {
         submenu: [
           { role: 'minimize' },
           { role: 'close' },
-          {
-            label: 'Zoom',
-            role: 'zoom',
-          },
-          {
-            type: 'separator',
-          },
-          {
-            label: 'Bring All to Front',
-            role: 'front',
-          },
+          { label: 'Zoom', role: 'zoom' },
+          { type: 'separator' },
+          { label: 'Bring All to Front', role: 'front' },
         ],
       },
     ];
