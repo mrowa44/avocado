@@ -184,7 +184,7 @@ class Pomodoro extends Component {
 }
 
 Pomodoro.propTypes = {
-  focusComponent: PropTypes.element.isRequired,
+  focusComponent: PropTypes.element, // eslint-disable-line react/require-default-props
   isFocus: PropTypes.bool.isRequired,
 };
 

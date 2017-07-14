@@ -5,6 +5,7 @@ const remove = require('lodash.remove');
 const isDev = require('electron-is-dev');
 const { createMenuBarIcon } = require('./electron/menu-bar');
 const {
+  COLLAPSED_HEIGHT,
   EXPANDED_HEIGHT,
   WINDOW_WIDTH,
 } = require('./constants');
@@ -14,10 +15,11 @@ require('electron-context-menu')();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+const store = new Store();
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    height: EXPANDED_HEIGHT,
+    height: store.get('windowCollapsed') ? COLLAPSED_HEIGHT : EXPANDED_HEIGHT,
     resizable: isDev,
     titleBarStyle: 'hidden-inset',
     width: WINDOW_WIDTH,
@@ -49,7 +51,6 @@ app.on('activate', () => {
 });
 
 app.on('before-quit', () => {
-  const store = new Store();
   const tasks = store.get('tasks');
   remove(tasks, task => task.done);
   store.set('tasks', tasks);
