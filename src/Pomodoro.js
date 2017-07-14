@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import moment from 'moment';
 
 import Button from './Button';
 import Bullets from './Bullets';
+import Focus from './Focus';
 import {
   FETCHED_POMODOROS,
   FETCH_POMODOROS,
@@ -139,19 +141,27 @@ class Pomodoro extends Component {
 
   render() {
     const { minutes, seconds, duration, running, pomodoros } = this.state;
+    const isFocus = this.props.isFocus;
     const timerClass = cx('pomodoro-timer', {
       'pomodoro-timer--running': running,
+    });
+    const focusClass = cx('pomodoro-focus', {
+      'pomodoro-focus--shown': isFocus && running,
+    });
+    const clockClass = cx('pomodoro-timer__text', {
+      'pomodoro-timer__text--shown': running && !isFocus,
     });
     const percent = 1 - ((minutes + (seconds / 60)) / duration);
 
     return (
       <div className="pomodoro">
+        <div className={focusClass}>{this.props.focusComponent}</div>
         <div className={timerClass}>
           <div
             className="pomodoro-timer__bg"
             style={{ width: `${percent * 100}%` }}
           />
-          <button className="pomodoro-timer__text" onClick={this.stopTimer}>
+          <button className={clockClass} onClick={this.stopTimer}>
             {minutes}:{seconds}
           </button>
         </div>
@@ -173,4 +183,9 @@ class Pomodoro extends Component {
   }
 }
 
-export default Pomodoro;
+Pomodoro.propTypes = {
+  focusComponent: PropTypes.element.isRequired,
+  isFocus: PropTypes.bool.isRequired,
+};
+
+export default Focus(Pomodoro);

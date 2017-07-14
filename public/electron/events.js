@@ -58,6 +58,12 @@ ipc.on(TOGGLE_DONE, (event, taskId) => {
   const toggledTask = Object.assign(task, { done: !task.done });
   const newTasks = Object.assign(tasks.slice(), { [idx]: toggledTask });
 
+  const focus = store.get('focus');
+  if (toggledTask.done && focus && focus.id === toggledTask.id) {
+    store.set('focus', null);
+    event.sender.send(FETCHED_FOCUS, store.get('focus'));
+  }
+
   store.set('tasks', newTasks);
   event.sender.send(FETCHED_TASKS, store.get('tasks'));
 });
@@ -100,6 +106,9 @@ ipc.on(POMODORO_TIME, (event, time) => {
 ipc.on(POMODORO_START, (event, duration, startTime) => {
   store.set('pomodoros.current', { duration, startTime });
   event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
+  if (store.get('focus')) {
+    setWindowHeight(COLLAPSED_HEIGHT);
+  }
 });
 
 ipc.on(COLLAPSE_WINDOW, () => {
@@ -113,7 +122,9 @@ ipc.on(EXPAND_WINDOW, () => {
 ipc.on(SET_FOCUS, (event, task) => {
   store.set('focus', task);
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
-  setWindowHeight(250);
+  if (store.get('pomodoros.current')) {
+    setWindowHeight(COLLAPSED_HEIGHT);
+  }
 });
 
 ipc.on(FETCH_FOCUS, (event) => {

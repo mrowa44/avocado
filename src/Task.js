@@ -51,6 +51,7 @@ class Task extends Component {
         <div className="task__text">
           {this.props.text}
         </div>
+        {this.props.isFocus && <span className="task__focus">F</span>}
       </li>
     );
   }
@@ -60,8 +61,13 @@ Task.propTypes = {
   active: PropTypes.bool.isRequired,
   done: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
+  isFocus: PropTypes.bool,
   setActive: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
+};
+
+Task.defaultProps = {
+  isFocus: false,
 };
 
 export default Task;

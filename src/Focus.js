@@ -47,17 +47,19 @@ function Focus(PassedComponent) {
         <div className="focus">
           <div className="focus__text">{task.text}</div>
           <div className="focus__buttons">
-            <Button text="Done" onClick={this.constructor.markDone} kind="positive" />
-            <Button text="Give up" onClick={this.constructor.giveUp} kind="negative" />
+            <Button text="Done" onClick={this.constructor.markDone} kind="primary" />
+            <Button text="Give up" onClick={this.constructor.giveUp} kind="default" />
           </div>
         </div>
       );
     }
 
     render() {
+      const task = this.state.task;
       return (<PassedComponent
-        isFocus={!!this.state.task}
+        isFocus={!!task}
         focusComponent={this.createFocusComponent()}
+        focusId={task && task.id}
         {...this.props}
       />);
     }

@@ -91,13 +91,13 @@ class TaskList extends Component {
   render() {
     return (
       <ul className="task-list list-group" onClick={this.setNoneActive} role="button">
-        { this.props.isFocus && this.props.focusComponent }
         { this.state.tasks.map(task => (
           <Task
             {...task}
             key={task.id}
             active={task.id === this.state.activeId}
             setActive={this.setActive}
+            isFocus={task.id === this.props.focusId}
           />),
         ) }
       </ul>
@@ -106,8 +106,7 @@ class TaskList extends Component {
 }
 
 TaskList.propTypes = {
-  focusComponent: PropTypes.element, // eslint-disable-line react/require-default-props
-  isFocus: PropTypes.bool.isRequired,
+  focusId: PropTypes.number, // eslint-disable-line react/require-default-props
 };
 
 export default Focus(TaskList);
