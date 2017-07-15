@@ -1,6 +1,6 @@
 @import 'mixins';
 
-$green-1: #242f36;
+$green-1: #1B242B;
 // $green-2: #28332D;
 $green-3: #55ffa2;
 $green-4: #47e993;
@@ -11,6 +11,8 @@ $white: #fafafa;
 $black: #000;
 $gray: #F4F4F4;
 $gray-2: #ddd;
+$gray-3: #888;
+$blue: #1f9ed2;
 
 h1, h2, h3, h4, h5, h6, ul {
   margin: 0;
@@ -18,12 +20,17 @@ h1, h2, h3, h4, h5, h6, ul {
 }
 
 a:link, a:active, a:visited, a:hover {
-  color: $green-6;
+  color: $blue;
   text-decoration: none;
 }
 
+a:hover {
+  border-bottom: 2px solid $blue;
+}
+
 .section-title {
-  margin: 50px auto 50px;
+  font-size: 1.6rem;
+  padding: 50px 0 50px;
   text-align: center;
 }
 
@@ -39,7 +46,8 @@ html {
 
 body {
   box-shadow: 0 0px 100px rgba($black, 0.1);
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
   margin: auto;
   max-width: 960px;
   min-height: 100%;
@@ -50,18 +58,26 @@ body {
   background: $green-1;
   color: $white;
   display: flex;
-  font-family: 'Ubuntu', sans-serif;
   justify-content: space-around;
   padding-top: 50px;
 
   &__left {
+    color: rgba($white, 0.4);
+    line-height: 35px;
+    margin-top: -80px;
+    max-width: 50%;
     text-align: center;
   }
 
   &__title {
     align-items: center;
+    color: $white;
     display: flex;
-    margin-bottom: 15px;
+    font-size: 1.2rem;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    margin-left: -30px;
   }
 
   &__icon {
@@ -72,6 +88,14 @@ body {
 
   &__screen {
     width: 450px;
+  }
+
+  &--emphasize {
+    color: rgba($white, 0.7);
+  }
+
+  h2 {
+    max-width: 350px;
   }
 }
 
@@ -84,7 +108,7 @@ body {
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 50px;
   transition: background 200ms, box-shadow 200ms;
 
   &:hover {
@@ -109,14 +133,13 @@ body {
 }
 
 .features-section ul {
-  list-style: none;
+  list-style: square inside;
   width: 50%;
 }
 
 .features-section li {
-  align-items: center;
   background: $gray;
-  display: flex;
+  cursor: default;
   height: 40px;
   line-height: 25px;
   transition: background 200ms, box-shadow 200ms;
@@ -130,25 +153,27 @@ body {
 }
 
 .questions-section {
-  &__wrapper {
-    display: flex;
-    padding-bottom: 50px;
-  }
-
   &__item {
-    padding: 50px 20px;
+    letter-spacing: 0.1px;
+    line-height: 2rem;
+    padding: 20px 20px;
   }
-}
 
-.questions-section ul {
-  width: 50%;
-  list-style: none;
+  &__list {
+    list-style: none;
+    padding: 0 50px;
+  }
 }
 
 .questions-section__item {
   &-question {
     font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  &-answer {
+    color: $gray-3;
   }
 }
 
@@ -159,20 +184,25 @@ body {
 
 .shortcuts-section table {
   border: 1px solid $gray-2;
-  margin: auto;
+  margin: 20px auto 30px;
   text-align: left;
 
   td, th {
-    width: 300px;
-    padding: 20px 10px;
+    width: 250px;
+    padding: 13px 10px;
   }
 
   th {
     border-bottom: 1px solid $gray-2;
+    text-align: center;
   }
 
   tr:nth-child(2n) {
     background: $gray;
+  }
+
+  td {
+    font-size: 0.87rem;
   }
 }
 
@@ -192,6 +222,7 @@ body {
   &__brand {
     @include absolute(right 0 bottom 0 left 0);
     color: rgba($white, 0.04);
+    cursor: default;
     font-size: 12rem;
     margin-bottom: -70px;
     text-align: center;

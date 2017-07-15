@@ -3,11 +3,15 @@ h1, h2, h3, h4, h5, h6, ul {
   padding: 0; }
 
 a:link, a:active, a:visited, a:hover {
-  color: #1cb067;
+  color: #1f9ed2;
   text-decoration: none; }
 
+a:hover {
+  border-bottom: 2px solid #1f9ed2; }
+
 .section-title {
-  margin: 50px auto 50px;
+  font-size: 1.6rem;
+  padding: 50px 0 50px;
   text-align: center; }
 
 html,
@@ -20,31 +24,44 @@ html {
 
 body {
   box-shadow: 0 0px 100px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
   margin: auto;
   max-width: 960px;
   min-height: 100%; }
 
 .header {
   align-items: center;
-  background: #242f36;
+  background: #1B242B;
   color: #fafafa;
   display: flex;
-  font-family: 'Ubuntu', sans-serif;
   justify-content: space-around;
   padding-top: 50px; }
   .header__left {
+    color: rgba(250, 250, 250, 0.4);
+    line-height: 35px;
+    margin-top: -80px;
+    max-width: 50%;
     text-align: center; }
   .header__title {
     align-items: center;
+    color: #fafafa;
     display: flex;
-    margin-bottom: 15px; }
+    font-size: 1.2rem;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    margin-left: -30px; }
   .header__icon {
     height: 60px;
     margin-right: 15px;
     margin-top: -10px; }
   .header__screen {
     width: 450px; }
+  .header--emphasize {
+    color: rgba(250, 250, 250, 0.7); }
+  .header h2 {
+    max-width: 350px; }
 
 .download {
   width: 180px;
@@ -56,7 +73,7 @@ body {
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 50px;
   transition: background 200ms, box-shadow 200ms; }
   .download:hover {
     background: #55ffa2;
@@ -73,13 +90,12 @@ body {
     padding: 30px 80px 30px 30px; }
 
 .features-section ul {
-  list-style: none;
+  list-style: square inside;
   width: 50%; }
 
 .features-section li {
-  align-items: center;
   background: #F4F4F4;
-  display: flex;
+  cursor: default;
   height: 40px;
   line-height: 25px;
   transition: background 200ms, box-shadow 200ms; }
@@ -89,19 +105,20 @@ body {
     position: relative;
     z-index: 1; }
 
-.questions-section__wrapper {
-  display: flex;
-  padding-bottom: 50px; }
 .questions-section__item {
-  padding: 50px 20px; }
-
-.questions-section ul {
-  width: 50%;
-  list-style: none; }
+  letter-spacing: 0.1px;
+  line-height: 2rem;
+  padding: 20px 20px; }
+.questions-section__list {
+  list-style: none;
+  padding: 0 50px; }
 
 .questions-section__item-question {
   font-weight: bold;
-  margin-bottom: 20px; }
+  font-size: 20px;
+  margin-bottom: 15px; }
+.questions-section__item-answer {
+  color: #888; }
 
 .shortcuts-section {
   text-align: center;
@@ -109,18 +126,21 @@ body {
 
 .shortcuts-section table {
   border: 1px solid #ddd;
-  margin: auto;
+  margin: 20px auto 30px;
   text-align: left; }
   .shortcuts-section table td, .shortcuts-section table th {
-    width: 300px;
-    padding: 20px 10px; }
+    width: 250px;
+    padding: 13px 10px; }
   .shortcuts-section table th {
-    border-bottom: 1px solid #ddd; }
+    border-bottom: 1px solid #ddd;
+    text-align: center; }
   .shortcuts-section table tr:nth-child(2n) {
     background: #F4F4F4; }
+  .shortcuts-section table td {
+    font-size: 0.87rem; }
 
 .footer {
-  background: #242f36;
+  background: #1B242B;
   color: #fafafa;
   overflow: hidden;
   position: relative; }
@@ -137,6 +157,7 @@ body {
     right: 0;
     position: absolute;
     color: rgba(250, 250, 250, 0.04);
+    cursor: default;
     font-size: 12rem;
     margin-bottom: -70px;
     text-align: center; }
