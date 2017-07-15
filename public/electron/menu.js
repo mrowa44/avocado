@@ -14,7 +14,6 @@ const {
 } = require('./actions');
 
 let icon;
-const emptyIcon = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 const iconPath = path.join(__dirname, '../icon.png');
 
 function createPomodoro(time) {
@@ -43,11 +42,10 @@ module.exports = {
     icon.setContextMenu(contextMenu);
     icon.setTitle(text);
   },
-  getIconInstance() {
-    return icon;
-  },
+  getIconInstance() { return icon; },
   setNoIcon() {
-    const emptyImg = nativeImage.createFromDataURL(emptyIcon);
+    const emptyImg = nativeImage.createEmpty();
+    emptyImg.resize({ width: 0, height: 0 });
     if (icon) {
       icon.setImage(emptyImg);
     }
