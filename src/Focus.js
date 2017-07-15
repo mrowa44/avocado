@@ -47,7 +47,7 @@ function Focus(PassedComponent) {
         <div className="focus">
           <div className="focus__text">{task.text}</div>
           <div className="focus__buttons">
-            <Button text="Done" onClick={this.constructor.markDone} kind="primary" />
+            <Button text="Done" onClick={this.constructor.markDone} kind="positive" />
             <Button text="Give up" onClick={this.constructor.giveUp} kind="default" />
           </div>
         </div>
