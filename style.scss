@@ -9,174 +9,197 @@ $green-6: #1cb067;
 
 $white: #fafafa;
 $black: #000;
+$gray: #F4F4F4;
+$gray-2: #ddd;
+
+h1, h2, h3, h4, h5, h6, ul {
+  margin: 0;
+  padding: 0;
+}
+
+a:link, a:active, a:visited, a:hover {
+  color: $green-6;
+  text-decoration: none;
+}
+
+.section-title {
+  margin: 50px auto 50px;
+  text-align: center;
+}
 
 html,
 body {
-  background: $green-1;
-  font-family: 'San Francisco', 'SNFS Display', BlinkMacSystemFont, 'Segoe UI', Roboto,
-  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   margin: 0;
   min-height: 100%;
 }
 
-.header {
-  @include special-font;
-  background: $green-1;
-  height: 100vh;
-}
-
-.header__circles {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-
-  &--first {
-    background: $green-3;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: 0 0 80px 20px rgba($black, 0.3);
-    display: flex;
-    height: 1400px;
-    margin: auto;
-    transform: translateY(-20%);
-    width: 1100px;
-  }
-
-  &--second {
-    @include circle(900px);
-    @include flex-centered;
-    background: $green-4;
-    display: flex;
-    margin: auto;
-    transform: translateY(8%);
-  }
-
-  &--third {
-    @include circle(700px);
-    @include flex-centered;
-    background: $green-5;
-    display: flex;
-    margin: auto;
-  }
-
-  &--fourth {
-    @include circle(500px);
-    @include flex-centered;
-    background: $green-6;
-    margin: auto;
-  }
-}
-
-.header__circles-text {
-  @include absolute(top 0 right 0 bottom 0 left 0);
-  @include flex-centered;
-  flex-direction: column;
-  // padding-top: 10px;
-
-  h1 {
-    color: rgba($white, 0.95);
-    font-size: 7rem;
-    margin: 0;
-  }
-
-  h3 {
-    color: rgba($black, 0.4);
-    font-size: 2rem;
-    margin: 0;
-  }
-}
-
-.content {
-  margin: auto;
-  max-width: 50em;
-}
-
-section {
+html {
   background: $white;
+}
 
-  h3 {
-    font-size: 2rem;
-    padding: 30px 0;
+body {
+  box-shadow: 0 0px 100px rgba($black, 0.1);
+  font-family: sans-serif;
+  margin: auto;
+  max-width: 960px;
+  min-height: 100%;
+}
+
+.header {
+  align-items: center;
+  background: $green-1;
+  color: $white;
+  display: flex;
+  font-family: 'Ubuntu', sans-serif;
+  justify-content: space-around;
+  padding-top: 50px;
+
+  &__left {
     text-align: center;
-    width: 100%;
-
-    &::after {
-      background: $green-6;
-      content: '';
-      display: block;
-      height: 2px;
-      margin: 20px auto 0;
-      width: 50px;
-    }
   }
 
-  .answer {
-    font-size: 1.3rem;
-    line-height: 35px;
-    margin: auto;
-    // max-width: 1070px;
-    padding: 10px 20px 110px;
+  &__title {
+    align-items: center;
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  &__icon {
+    height: 60px;
+    margin-right: 15px;
+    margin-top: -10px;
+  }
+
+  &__screen {
+    width: 450px;
+  }
+}
+
+.download {
+  @include sizing(180px 50px);
+  background: $green-4;
+  border: 0;
+  border-radius: 5px;
+  color: rgba($black, 0.4);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 30px;
+  transition: background 200ms, box-shadow 200ms;
+
+  &:hover {
+    background: $green-3;
+    box-shadow: 0 5px 40px 5px rgba($green-3, 0.1);
   }
 }
 
 .features-section {
+  border-bottom: 1px solid $gray;
+  border-left: 1px solid $gray;
+  border-right: 1px solid $gray;
   display: flex;
-  padding-bottom: 100px;
-  padding-top: 50px;
 
-  ul {
-    list-style-type: circle;
-    margin-top: 30px;
+  &__left li {
+    padding: 30px 30px 30px 80px;
   }
 
-  li {
-    font-size: 1.1rem;
-    line-height: 35px;
-    padding: 20px 0;
+  &__right li {
+    padding: 30px 80px 30px 30px;
   }
 }
 
-.download-section {
-  @include flex-centered;
-  padding: 100px 0;
+.features-section ul {
+  list-style: none;
+  width: 50%;
 }
 
-.download-btn {
-  @include sizing(250px 60px);
-  background: $green-4;
-  border: 0;
-  border-radius: 5px;
-  box-shadow: 0 5px 40px 5px rgba($green-3, 0.4);
-  color: rgba($black, 0.4);
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: background 200ms;
+.features-section li {
+  align-items: center;
+  background: $gray;
+  display: flex;
+  height: 40px;
+  line-height: 25px;
+  transition: background 200ms, box-shadow 200ms;
 
   &:hover {
-    background: $green-3;
+    background: $white;
+    box-shadow: 0 5px 50px rgba($black, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.questions-section {
+  &__wrapper {
+    display: flex;
+    padding-bottom: 50px;
+  }
+
+  &__item {
+    padding: 50px 20px;
+  }
+}
+
+.questions-section ul {
+  width: 50%;
+  list-style: none;
+}
+
+.questions-section__item {
+  &-question {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}
+
+.shortcuts-section {
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.shortcuts-section table {
+  border: 1px solid $gray-2;
+  margin: auto;
+  text-align: left;
+
+  td, th {
+    width: 300px;
+    padding: 20px 10px;
+  }
+
+  th {
+    border-bottom: 1px solid $gray-2;
+  }
+
+  tr:nth-child(2n) {
+    background: $gray;
   }
 }
 
 .footer {
-  @include flex-centered;
   background: $green-1;
   color: $white;
-  min-height: 100px;
-  flex-direction: column;
+  overflow: hidden;
+  position: relative;
 
-  p {
-    font-size: 0.75rem;
-    color: rgba($white, 0.7);
+  &__text {
+    @include flex-centered;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 250px;
   }
 
-  &__name {
-    @include special-font;
-    margin: auto;
-    padding: 20px 0;
-    font-size: 5rem;
-    font-weight: bold;
-    color: rgba($green-3, 0.03);
-    text-transform: uppercase;
-    letter-spacing: 15px;
+  &__brand {
+    @include absolute(right 0 bottom 0 left 0);
+    color: rgba($white, 0.04);
+    font-size: 12rem;
+    margin-bottom: -70px;
+    text-align: center;
   }
+}
+
+.footer h2 {
+  font-weight: normal;
+  margin-bottom: 40px;
+  margin-top: 90px;
 }

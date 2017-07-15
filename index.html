@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -10,54 +10,120 @@
   </head>
   <body>
     <header class="header">
-      <div class="header__circles">
-        <div class="header__circles--first">
-          <div class="header__circles--second">
-            <div class="header__circles--third">
-              <div class="header__circles--fourth">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="header__circles-text">
+      <div class="header__left">
+        <div class="header__title">
+          <img src="icon.png" class="header__icon" />
           <h1>Avocado</h1>
-          <h3>productivity enhancer</h3>
         </div>
+        <!-- macOS -->
+        <h2>productivity enhancer</h2>
+        <button type="button" class="download">Download</button>
+      </div>
+      <div class="header__right">
+        <img src="screen.png" class="header__screen" />
       </div>
     </header>
-    <section>
-      <div class="content">
-        <h3>What?</h3>
-        <p class="answer">productivity enhancer, not task manager</p>
-
-        <h3>Whaaat?</h3>
-        <p class="answer">
-          It’s not built to replace fancy task managers out there; rather it’s an attempt to enhance them by giving you a dead simple interface to interact with your tasks and actually do them - not to fiddle with them.
-        </p>
-      </div>
-    </section>
     <section class="features-section">
-      <div class="content">
-        <img src="screen.png" />
-        <ul>
-          <li>dead simple interface focused on doing - not managing your tasks</li>
-          <li>mouseless interaction</li> TODO: add keys list
-          <li>daily pomodoro goal</li>
-          <li>focus on one task at a time</li>
-          <li>makes you explicitly admit to failing a task by giving you only 'done' and 'give up' option</li>
-          <li>delightful sounds</li>
-          <li>todoist, gtasks, (insert your tool) fetch</li>
+      <ul class="features-section__left">
+        <li>dead simple interface focused on doing - not managing your tasks</li>
+        <li>mouseless interaction</li>
+        <li>daily pomodoro goal</li>
+      </ul>
+      <ul class="features-section__right">
+        <li>focus on one task at a time</li>
+        <li>makes you explicitly admit to failing a task by giving you only 'done' and 'give up' option</li>
+        <li>Todoist, Google Tasks fetch</li>
+      </ul>
+    </section>
+    <section class="questions-section">
+      <h2 class="section-title">Q & A</h2>
+      <div class="questions-section__wrapper">
+        <ul class="questions-section__left">
+          <li class="questions-section__item">
+            <div class="questions-section__item-question">
+              Producivity what?
+            </div>
+            <div class="questions-section__item-answer">
+              Productivity enhancer, not task manager.
+            </div>
+          </li>
+          <li class="questions-section__item">
+            <div class="questions-section__item-question">
+              Whaaaaat?
+            </div>
+            <div class="questions-section__item-answer">
+              It’s not built to replace fancy task managers out there; rather it’s an attempt to enhance them by giving you a dead simple interface to interact with your tasks and actually do them - not to fiddle with them.
+            </div>
+          </li>
+          <li class="questions-section__item">
+            <div class="questions-section__item-question">
+              How it works?
+            </div>
+            <div class="questions-section__item-answer">
+              You use your normal task manager to decide what you want to do today. Those tasks will show up in avocado. That’s it.
+            </div>
+          </li>
+        </ul>
+        <ul class="questions-section__right">
+          <li class="questions-section__item">
+            <div class="questions-section__item-question">
+              I can't pause a pomodoro
+            </div>
+            <div class="questions-section__item-answer">
+              You can’t because your attention doesn’t work this way - you either focus full time or start over.
+            </div>
+          </li>
+          <li class="questions-section__item">
+            <div class="questions-section__item-question">
+              I can’t pause a pomodoro and I need to go to the bathroom
+            </div>
+            <div class="questions-section__item-answer">
+              You have our permission to count that as work, keep the pomodoro going.
+            </div>
+          </li>
+          <li class="questions-section__item">
+            <div class="questions-section__item-question">
+              Money
+            </div>
+            <div class="questions-section__item-answer">
+              A project has to be sustainable, or shut down. Also: <a
+                href="https://blog.pinboard.in/2011/12/don_t_be_a_free_user/">*link*</a>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
-    <section class="download-section">
-      <div class="content">
-        <button type="button" class="download-btn">Download</button>
-      </div>
+    <section class="shortcuts-section">
+      <h2 class="section-title">Keyboard shortcuts</h2>
+      <table>
+        <tr>
+          <th>Combination</th>
+          <th>Action</th> 
+        </tr>
+        <tr>
+          <td>CMD + L</td>
+          <td>New task</td> 
+        </tr>
+        <tr>
+          <td>CMD + K</td>
+          <td>Up a task</td> 
+        </tr>
+        <tr>
+          <td>CMD + J</td>
+          <td>Down a task</td> 
+        </tr>
+        <tr>
+          <td>CMD + F</td>
+          <td>Set to focus</td> 
+        </tr>
+      </table>
     </section>
     <footer class="footer">
-      <div class="footer__name">Avocado</div>
-      <p>Made with blah blah, go get sh*t done.</p>
+      <div class="footer__text">
+        <h2>That's a damn fine app right there, why won't you try it yourself?</h2>
+        <button type="button" class="download">Download</button>
+      </div>
+      <div class="footer__brand">Avocado</div>
     </footer>
   </body>
 </html>
