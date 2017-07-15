@@ -3,6 +3,7 @@
 .task {
   display: flex;
   align-items: center;
+  min-height: 45px;
 
   &--active {
     background: $blue-hl;
@@ -33,5 +34,6 @@
   .list-group &__focus {
     margin-right: 10px;
     margin-left: auto;
+    font-size: $fs-15;
   }
 }

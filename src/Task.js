@@ -53,7 +53,7 @@ class Task extends Component {
         <div className="task__text">
           {this.props.text}
         </div>
-        {isFocus && <span className="task__focus">F</span>}
+        {isFocus && <span className="icon icon-target task__focus" />}
       </li>
     );
   }
