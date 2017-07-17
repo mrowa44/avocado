@@ -5,6 +5,7 @@ import {
   FETCH_DAILY_GOAL,
   UPDATE_DAILY_GOAL,
 } from '../constants';
+import './SettingsGeneral.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
 
@@ -25,6 +26,10 @@ class SettingsGeneral extends Component {
     });
   }
 
+  componentWillUnmount() {
+    ipc.removeAllListeners(FETCHED_DAILY_GOAL);
+  }
+
   updateGoal(event) {
     event.preventDefault();
     const input = this.input;
@@ -42,7 +47,7 @@ class SettingsGeneral extends Component {
 
   render() {
     return (
-      <div>
+      <div className="settings-general">
         <form onSubmit={this.updateGoal} className="form-group">
           <label htmlFor="goal">Daily pomodoro goal</label>
           <input

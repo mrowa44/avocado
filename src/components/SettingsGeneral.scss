@@ -1,0 +1,15 @@
+@import '../shared.scss';
+
+.settings-general {
+  margin-top: 40px;
+
+  .form-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  input {
+    max-width: 50px;
+  }
+}
