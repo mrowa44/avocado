@@ -1,0 +1,17 @@
+@import '../shared.scss';
+
+.settings {
+  background: $gray-6;
+
+  &__header {
+    @include flex-centered;
+    min-height: 35px;
+    -webkit-app-region: drag;
+    -webkit-user-drag: auto;
+    user-drag: auto;
+  }
+
+  &__buttons {
+    margin: 10px auto 0;
+  }
+}
