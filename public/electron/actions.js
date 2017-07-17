@@ -11,7 +11,9 @@ const {
 const store = new Store();
 
 function collapseWindow() {
-  const win = BrowserWindow.getFocusedWindow();
+  const win = BrowserWindow.getFocusedWindow() || BrowserWindow.getAllWindows()[0];
+  if (!win) { return; }
+
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, COLLAPSED_HEIGHT, true);
   store.set('windowCollapsed', true);
