@@ -14,7 +14,7 @@ const {
 } = require('./actions');
 
 let icon;
-const iconPath = path.join(__dirname, '../icon.png');
+const iconPath = path.join(__dirname, '../menuIconTemplate.png');
 
 function createPomodoro(time) {
   return () => {
