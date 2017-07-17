@@ -1,10 +1,11 @@
 const { BrowserWindow } = require('electron');
 const Store = require('electron-store');
-const path = require('path');
 const isDev = require('electron-is-dev');
 
 const {
+  BUILD_URL,
   COLLAPSED_HEIGHT,
+  DEV_URL,
   EXPANDED_HEIGHT,
   FETCHED_COLLAPSE,
   FETCHED_POMODOROS,
@@ -51,7 +52,8 @@ module.exports = {
       title: 'Preferences',
     });
     settingsWin.isSettingsWin = true;
-    settingsWin.loadURL(isDev ? 'http://localhost:3000/settings' : `file://${path.join(__dirname, '../build/index.html/settings')}`);
+    const settingsUrl = isDev ? `${DEV_URL}#settings` : `${BUILD_URL}#settings}`;
+    settingsWin.loadURL(settingsUrl);
   },
   startPomodoro(duration, startTime) {
     store.set('pomodoros.current', { duration, startTime });

@@ -1,4 +1,3 @@
-const path = require('path');
 const Store = require('electron-store');
 const remove = require('lodash.remove');
 const isDev = require('electron-is-dev');
@@ -13,7 +12,9 @@ const {
   destroyMenuBarIcon,
 } = require('./electron/menu');
 const {
+  BUILD_URL,
   COLLAPSED_HEIGHT,
+  DEV_URL,
   EXPANDED_HEIGHT,
   WINDOW_WIDTH,
 } = require('./constants');
@@ -36,7 +37,8 @@ function createWindow() {
     title: 'Avocado',
   });
 
-  mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+  const appUrl = isDev ? DEV_URL : BUILD_URL;
+  mainWindow.loadURL(appUrl);
   mainWindow.isMainWindow = true; // the uglies hack ever?
   if (isDev) { mainWindow.webContents.openDevTools(); }
 

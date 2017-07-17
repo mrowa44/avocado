@@ -1,4 +1,9 @@
+const path = require('path');
+
 module.exports = {
+  DEV_URL: 'http://localhost:3000',
+  BUILD_URL: 'file://' + path.join(__dirname, '../build/index.html'), // eslint-disable-line prefer-template
+
   // tasks
   ADD_TODO: 'ADD_TODO',
   TOGGLE_DONE: 'TOGGLE_DONE',
