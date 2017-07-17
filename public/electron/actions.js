@@ -38,6 +38,9 @@ module.exports = {
   collapseWindow,
   expandWindow,
   openSettings() {
+    const windows = BrowserWindow.getAllWindows();
+    if (windows.find(win => win.isSettingsWin)) { return; }
+
     const settingsWin = new BrowserWindow({
       height: 300,
       width: 300,
@@ -47,6 +50,7 @@ module.exports = {
       titleBarStyle: 'hidden-inset',
       title: 'Preferences',
     });
+    settingsWin.isSettingsWin = true;
     settingsWin.loadURL(isDev ? 'http://localhost:3000/settings' : `file://${path.join(__dirname, '../build/index.html/settings')}`);
   },
   startPomodoro(duration, startTime) {
