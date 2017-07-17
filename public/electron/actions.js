@@ -1,5 +1,7 @@
 const { BrowserWindow } = require('electron');
 const Store = require('electron-store');
+const path = require('path');
+const isDev = require('electron-is-dev');
 
 const {
   COLLAPSED_HEIGHT,
@@ -32,6 +34,7 @@ function expandWindow() {
 }
 
 module.exports = {
+  getMainWindow,
   collapseWindow,
   expandWindow,
   openSettings() {
@@ -44,7 +47,7 @@ module.exports = {
       titleBarStyle: 'hidden-inset',
       title: 'Preferences',
     });
-    settingsWin.loadURL('http://localhost:3000/settings');
+    settingsWin.loadURL(isDev ? 'http://localhost:3000/settings' : `file://${path.join(__dirname, '../build/index.html/settings')}`);
   },
   startPomodoro(duration, startTime) {
     store.set('pomodoros.current', { duration, startTime });

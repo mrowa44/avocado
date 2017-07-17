@@ -13,10 +13,12 @@ const {
   COMPLETE_FOCUS_TASK,
   EXPAND_WINDOW,
   FETCHED_COLLAPSE,
+  FETCHED_DAILY_GOAL,
   FETCHED_FOCUS,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
   FETCH_COLLAPSE,
+  FETCH_DAILY_GOAL,
   FETCH_FOCUS,
   FETCH_POMODOROS,
   FETCH_TASKS,
@@ -27,8 +29,10 @@ const {
   POMODORO_TIME,
   SET_FOCUS,
   TOGGLE_DONE,
+  UPDATE_DAILY_GOAL,
 } = require('../constants');
 const {
+  getMainWindow,
   collapseWindow,
   expandWindow,
   startPomodoro,
@@ -151,4 +155,15 @@ ipc.on(GIVE_UP_FOCUS, (event) => {
   store.set('focus', null);
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
   expandWindow(event);
+});
+
+ipc.on(FETCH_DAILY_GOAL, (event) => {
+  event.sender.send(FETCHED_DAILY_GOAL, store.get('pomodoros.goal'));
+});
+
+ipc.on(UPDATE_DAILY_GOAL, (event, newGoal) => {
+  store.set('pomodoros.goal', newGoal);
+  const mainWin = getMainWindow();
+  mainWin.send(FETCHED_POMODOROS, store.get('pomodoros'));
+  event.sender.send(FETCHED_DAILY_GOAL, store.get('pomodoros.goal'));
 });

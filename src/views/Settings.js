@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Button from '../components/Button';
+import SettingsGeneral from '../components/SettingsGeneral';
 import './Settings.css';
 
 class Settings extends Component {
@@ -41,6 +42,7 @@ class Settings extends Component {
             onClick={this.showIntegrations}
           />
         </div>
+        {activeBtn === 'general' && <SettingsGeneral /> }
       </div>
     );
   }
