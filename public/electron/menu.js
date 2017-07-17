@@ -2,7 +2,6 @@ const path = require('path');
 const electron = require('electron');
 const moment = require('moment');
 const {
-  BrowserWindow,
   Menu,
   Tray,
   nativeImage,
@@ -18,8 +17,7 @@ const iconPath = path.join(__dirname, '../menuIconTemplate.png');
 
 function createPomodoro(time) {
   return () => {
-    const win = BrowserWindow.getAllWindows()[0];
-    startPomodoro(win.webContents, time, moment().format());
+    startPomodoro(time, moment().format());
   };
 }
 

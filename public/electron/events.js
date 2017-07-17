@@ -106,7 +106,7 @@ ipc.on(POMODORO_TIME, (event, time) => {
 });
 
 ipc.on(POMODORO_START, (event, duration, startTime) => {
-  startPomodoro(event.sender, duration, startTime);
+  startPomodoro(duration, startTime);
 });
 
 ipc.on(COLLAPSE_WINDOW, (event) => { collapseWindow(event); });

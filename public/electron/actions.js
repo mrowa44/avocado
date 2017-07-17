@@ -10,13 +10,16 @@ const {
 
 const store = new Store();
 
-function collapseWindow() {
-  const win = BrowserWindow.getFocusedWindow() || BrowserWindow.getAllWindows()[0];
-  if (!win) { return; }
+function getMainWindow() {
+  const windows = BrowserWindow.getAllWindows();
+  return windows.find(win => win.isMainWindow);
+}
 
+function collapseWindow() {
+  store.set('windowCollapsed', true);
+  const win = getMainWindow();
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, COLLAPSED_HEIGHT, true);
-  store.set('windowCollapsed', true);
   win.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
 }
 
@@ -43,9 +46,10 @@ module.exports = {
     });
     settingsWin.loadURL('http://localhost:3000/settings');
   },
-  startPomodoro(eventSender, duration, startTime) {
+  startPomodoro(duration, startTime) {
     store.set('pomodoros.current', { duration, startTime });
-    eventSender.send(FETCHED_POMODOROS, store.get('pomodoros'));
+    const win = getMainWindow();
+    win.send(FETCHED_POMODOROS, store.get('pomodoros'));
     if (store.get('focus')) {
       collapseWindow();
     }

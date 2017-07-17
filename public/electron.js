@@ -37,6 +37,7 @@ function createWindow() {
   });
 
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+  mainWindow.isMainWindow = true; // the uglies hack ever?
   if (isDev) { mainWindow.webContents.openDevTools(); }
 
   mainWindow.on('closed', () => { mainWindow = null; });
