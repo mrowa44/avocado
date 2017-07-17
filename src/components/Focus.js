@@ -5,7 +5,7 @@ import {
   FETCHED_FOCUS,
   FETCH_FOCUS,
   GIVE_UP_FOCUS,
-} from './constants';
+} from '../constants';
 import Button from './Button';
 import './Focus.css';
 

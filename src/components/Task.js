@@ -6,7 +6,7 @@ import './Task.css';
 
 const {
   TOGGLE_DONE,
-} = require('./constants');
+} = require('../constants');
 
 const { ipcRenderer: ipc } = window.require('electron');
 

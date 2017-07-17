@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Header from './Header';
-import Pomodoro from './Pomodoro';
-import TaskList from './TaskList';
+import Header from '../components/Header';
+import Pomodoro from '../components/Pomodoro';
+import TaskList from '../components/TaskList';
 import './App.css';
 
 class App extends Component {

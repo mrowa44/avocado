@@ -6,7 +6,7 @@ import {
   FETCHED_TASKS,
   FETCH_TASKS,
   SET_FOCUS,
-} from './constants';
+} from '../constants';
 import Task from './Task';
 import Focus from './Focus';
 import './TaskList.css';

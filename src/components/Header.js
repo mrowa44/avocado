@@ -10,7 +10,7 @@ import {
   FETCHED_COLLAPSE,
   FETCH_COLLAPSE,
   POMODORO_START,
-} from './constants';
+} from '../constants';
 import './Header.css';
 
 const { ipcRenderer: ipc } = window.require('electron');

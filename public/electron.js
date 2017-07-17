@@ -28,9 +28,9 @@ const store = new Store();
 function createWindow() {
   mainWindow = new BrowserWindow({
     height: store.get('windowCollapsed') ? COLLAPSED_HEIGHT : EXPANDED_HEIGHT,
+    width: WINDOW_WIDTH,
     resizable: isDev,
     titleBarStyle: 'hidden-inset',
-    width: WINDOW_WIDTH,
     fullscreen: false,
     fullscreenable: false,
     title: 'Avocado',

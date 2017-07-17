@@ -13,8 +13,8 @@ import {
   POMODORO_START,
   POMODORO_STOP,
   POMODORO_TIME,
-} from './constants';
-import { formatToday } from './helpers';
+} from '../constants';
+import { formatToday } from '../helpers';
 import './Pomodoro.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
@@ -166,7 +166,7 @@ class Pomodoro extends Component {
           </button>
         </div>
         <div className="pomodoro-buttons">
-          <Button text="15 min" onClick={this.handleButtonClick(15)} />
+          <Button text="15 min" onClick={this.handleButtonClick(1)} />
           <Button text="20 min" onClick={this.handleButtonClick(20)} />
           <Button text="25 min" onClick={this.handleButtonClick(25)} />
           <Button text="30 min" onClick={this.handleButtonClick(30)} />

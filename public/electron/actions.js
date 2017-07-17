@@ -32,7 +32,16 @@ module.exports = {
   collapseWindow,
   expandWindow,
   openSettings() {
-    console.log('wow');
+    const settingsWin = new BrowserWindow({
+      height: 300,
+      width: 300,
+      resizable: false,
+      fullscreen: false,
+      fullscreenable: false,
+      titleBarStyle: 'hidden-inset',
+      title: 'Preferences',
+    });
+    settingsWin.loadURL('http://localhost:3000/settings');
   },
   startPomodoro(eventSender, duration, startTime) {
     store.set('pomodoros.current', { duration, startTime });
