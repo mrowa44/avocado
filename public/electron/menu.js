@@ -42,6 +42,9 @@ module.exports = {
     icon.setContextMenu(contextMenu);
     icon.setTitle(text);
   },
+  destroyMenuBarIcon() {
+    icon.destroy();
+  },
   getIconInstance() { return icon; },
   setNoIcon() {
     const emptyImg = nativeImage.createEmpty();

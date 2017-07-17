@@ -10,6 +10,7 @@ const {
 const {
   createMenuActions,
   createMenuBarIcon,
+  destroyMenuBarIcon,
 } = require('./electron/menu');
 const {
   COLLAPSED_HEIGHT,
@@ -47,6 +48,7 @@ app.commandLine.appendSwitch('disable-renderer-backgrounding'); // must be befor
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
+  destroyMenuBarIcon();
   if (process.platform !== 'darwin') {
     app.quit();
   }
