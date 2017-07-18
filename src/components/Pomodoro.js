@@ -166,7 +166,7 @@ class Pomodoro extends Component {
           </button>
         </div>
         <div className="pomodoro-buttons">
-          <Button text="15 min" onClick={this.handleButtonClick(1)} />
+          <Button text="15 min" onClick={this.handleButtonClick(15)} />
           <Button text="20 min" onClick={this.handleButtonClick(20)} />
           <Button text="25 min" onClick={this.handleButtonClick(25)} />
           <Button text="30 min" onClick={this.handleButtonClick(30)} />
