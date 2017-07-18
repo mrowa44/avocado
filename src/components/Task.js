@@ -11,6 +11,10 @@ const {
 const { ipcRenderer: ipc } = window.require('electron');
 
 class Task extends Component {
+  static stopPropagation(event) {
+    event.stopPropagation();
+  }
+
   constructor(props) {
     super(props);
     this.toggleDone = this.toggleDone.bind(this);
@@ -27,7 +31,8 @@ class Task extends Component {
     this.props.setActive(this.props.id);
   }
 
-  toggleDone() {
+  toggleDone(event) {
+    event.stopPropagation();
     ipc.send(TOGGLE_DONE, this.props.id);
   }
 
@@ -49,6 +54,7 @@ class Task extends Component {
           type="checkbox"
           checked={this.props.done}
           onChange={this.toggleDone}
+          onClick={this.constructor.stopPropagation}
         />
         <div className="task__text">
           {this.props.text}
