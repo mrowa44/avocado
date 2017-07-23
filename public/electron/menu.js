@@ -1,5 +1,5 @@
 const path = require('path');
-const electron = require('electron');
+const { app } = require('electron');
 const moment = require('moment');
 const {
   Menu,
@@ -17,9 +17,7 @@ let icon;
 const iconPath = path.join(__dirname, '../menuIconTemplate.png');
 
 function createPomodoro(time) {
-  return () => {
-    startPomodoro(time, moment().format());
-  };
+  return () => { startPomodoro(time, moment().format()); };
 }
 
 module.exports = {
@@ -41,9 +39,7 @@ module.exports = {
     icon.setContextMenu(contextMenu);
     icon.setTitle(text);
   },
-  destroyMenuBarIcon() {
-    icon.destroy();
-  },
+  destroyMenuBarIcon() { icon.destroy(); },
   getIconInstance() { return icon; },
   setNoIcon() {
     const emptyImg = nativeImage.createEmpty();
@@ -59,9 +55,7 @@ module.exports = {
     }
   },
   createMenuActions() {
-    const app = electron.app;
     const name = app.getName();
-
     const template = [
       {
         label: name,
