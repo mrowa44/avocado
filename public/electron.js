@@ -1,5 +1,4 @@
 const Store = require('electron-store');
-const remove = require('lodash.remove');
 const isDev = require('electron-is-dev');
 const {
   app,
@@ -11,6 +10,9 @@ const {
   createMenuBarIcon,
   destroyMenuBarIcon,
 } = require('./electron/menu');
+const {
+  deleteCompleted,
+} = require('./electron/actions');
 const {
   BUILD_URL,
   COLLAPSED_HEIGHT,
@@ -63,10 +65,6 @@ app.on('activate', () => {
   }
 });
 
-app.on('before-quit', () => {
-  const tasks = store.get('tasks');
-  remove(tasks, task => task.done);
-  store.set('tasks', tasks);
-});
+app.on('before-quit', deleteCompleted);
 
 require('./electron/events');

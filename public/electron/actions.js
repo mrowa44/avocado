@@ -1,6 +1,7 @@
 const { BrowserWindow } = require('electron');
 const Store = require('electron-store');
 const isDev = require('electron-is-dev');
+const remove = require('lodash.remove');
 
 const {
   BUILD_URL,
@@ -9,6 +10,7 @@ const {
   EXPANDED_HEIGHT,
   FETCHED_COLLAPSE,
   FETCHED_POMODOROS,
+  FETCHED_TASKS,
 } = require('../constants');
 
 const store = new Store();
@@ -61,6 +63,15 @@ module.exports = {
     win.send(FETCHED_POMODOROS, store.get('pomodoros'));
     if (store.get('focus')) {
       collapseWindow();
+    }
+  },
+  deleteCompleted() {
+    const tasks = store.get('tasks');
+    remove(tasks, task => task.done);
+    store.set('tasks', tasks);
+    const win = getMainWindow();
+    if (win) {
+      win.send(FETCHED_TASKS, store.get('tasks'));
     }
   },
 };

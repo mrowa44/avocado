@@ -8,6 +8,7 @@ const {
 } = require('electron');
 
 const {
+  deleteCompleted,
   openSettings,
   startPomodoro,
 } = require('./actions');
@@ -104,6 +105,16 @@ module.exports = {
               { role: 'startspeaking' },
               { role: 'stopspeaking' },
             ],
+          },
+        ],
+      },
+      {
+        label: 'Tasks',
+        submenu: [
+          {
+            label: 'Delete completed tasks',
+            accelerator: 'Cmd+Shift+D',
+            click: deleteCompleted,
           },
         ],
       },
