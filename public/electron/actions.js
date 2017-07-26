@@ -58,7 +58,7 @@ module.exports = {
       title: 'Preferences',
     });
     settingsWin.isSettingsWin = true;
-    const settingsUrl = isDev ? `${DEV_URL}#settings` : `${BUILD_URL}#settings}`;
+    const settingsUrl = isDev ? `${DEV_URL}#settings` : `${BUILD_URL}#settings`;
     settingsWin.loadURL(settingsUrl);
   },
   startPomodoro(duration, startTime) {
