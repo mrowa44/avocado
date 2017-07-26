@@ -32,7 +32,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     height: store.get('windowCollapsed') ? COLLAPSED_HEIGHT : EXPANDED_HEIGHT,
     width: WINDOW_WIDTH,
-    resizable: isDev,
+    resizable: false,
     titleBarStyle: 'hidden-inset',
     fullscreen: false,
     fullscreenable: false,
@@ -45,7 +45,7 @@ function createWindow() {
   if (isDev) { mainWindow.webContents.openDevTools(); }
 
   mainWindow.on('closed', () => { mainWindow = null; });
-  createMenuBarIcon();
+  app.trayIcon = createMenuBarIcon();
   createMenuActions();
 }
 

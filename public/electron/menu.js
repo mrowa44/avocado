@@ -11,6 +11,7 @@ const {
   deleteCompleted,
   openSettings,
   startPomodoro,
+  stopPomodoro,
 } = require('./actions');
 
 let icon;
@@ -38,6 +39,7 @@ module.exports = {
     icon.setToolTip('Avocado');
     icon.setContextMenu(contextMenu);
     icon.setTitle(text);
+    return icon;
   },
   destroyMenuBarIcon() { icon.destroy(); },
   getIconInstance() { return icon; },
@@ -109,6 +111,16 @@ module.exports = {
             label: 'Delete completed tasks',
             accelerator: 'Cmd+Shift+D',
             click: deleteCompleted,
+          },
+        ],
+      },
+      {
+        label: 'Pomodoro',
+        submenu: [
+          {
+            label: 'Stop pomodoro',
+            accelerator: 'Cmd+S',
+            click: stopPomodoro,
           },
         ],
       },

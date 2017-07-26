@@ -33,10 +33,11 @@ const {
   UPDATE_DAILY_GOAL,
 } = require('../constants');
 const {
-  getMainWindow,
   collapseWindow,
   expandWindow,
+  getMainWindow,
   startPomodoro,
+  stopPomodoro,
 } = require('./actions');
 
 const store = new Store();
@@ -97,11 +98,7 @@ ipc.on(POMODORO_FINISHED, (event) => {
   event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
 });
 
-ipc.on(POMODORO_STOP, (event) => {
-  store.set('pomodoros.current', null);
-  setNormalIcon();
-  event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
-});
+ipc.on(POMODORO_STOP, stopPomodoro);
 
 ipc.on(POMODORO_TIME, (event, time) => {
   const icon = getIconInstance();

@@ -1,7 +1,11 @@
-const { BrowserWindow } = require('electron');
+const path = require('path');
 const Store = require('electron-store');
 const isDev = require('electron-is-dev');
 const remove = require('lodash.remove');
+const {
+  BrowserWindow,
+  app,
+} = require('electron');
 
 const {
   BUILD_URL,
@@ -64,6 +68,17 @@ module.exports = {
     if (store.get('focus')) {
       collapseWindow();
     }
+  },
+  stopPomodoro() {
+    store.set('pomodoros.current', null);
+    const icon = app.trayIcon;
+    if (icon) {
+      const iconPath = path.join(__dirname, '../menuIconTemplate.png');
+      icon.setImage(iconPath);
+      icon.setTitle('');
+    }
+    const win = getMainWindow();
+    win.send(FETCHED_POMODOROS, store.get('pomodoros'));
   },
   deleteCompleted() {
     const tasks = store.get('tasks');
