@@ -1,12 +1,12 @@
 @import '../shared.scss';
 
 .settings-general {
-  margin-top: 40px;
+  margin-top: $settings-margin-top;
 
   .form-group {
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
   }
 
   input {

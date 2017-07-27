@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Button from '../components/Button';
 import SettingsGeneral from '../components/SettingsGeneral';
+import Integrations from '../components/Integrations';
 import './Settings.css';
 
 class Settings extends Component {
@@ -43,6 +44,7 @@ class Settings extends Component {
           />
         </div>
         {activeBtn === 'general' && <SettingsGeneral /> }
+        {activeBtn === 'integrations' && <Integrations />}
       </div>
     );
   }
