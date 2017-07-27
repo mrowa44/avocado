@@ -24,6 +24,7 @@ const {
   FETCH_POMODOROS,
   FETCH_TASKS,
   GIVE_UP_FOCUS,
+  INITIAL_TASKS,
   POMODORO_FINISHED,
   POMODORO_START,
   POMODORO_STOP,
@@ -44,7 +45,7 @@ const store = new Store();
 
 ipc.on(FETCH_TASKS, (event) => {
   if (!store.get('tasks')) {
-    store.set('tasks', []);
+    store.set('tasks', INITIAL_TASKS);
   }
   event.sender.send(FETCHED_TASKS, store.get('tasks'));
 });
