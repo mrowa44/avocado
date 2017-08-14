@@ -109,7 +109,7 @@ module.exports = {
         submenu: [
           {
             label: 'Delete completed tasks',
-            accelerator: 'Cmd+Shift+D',
+            accelerator: 'Cmd+Shift+Backspace',
             click: deleteCompleted,
           },
         ],
