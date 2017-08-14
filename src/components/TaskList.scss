@@ -1,5 +1,18 @@
+@import '../shared.scss';
+
 .task-list {
   position: relative;
   min-height: 70%;
   overflow: auto;
+
+  &--empty {
+    @include flex-centered;
+    font-size: 1.3rem;
+    align-items: center;
+    height: 100%;
+    white-space: normal;
+    padding: 50px 20px;
+    text-align: center;
+    color: $gray-3;
+  }
 }

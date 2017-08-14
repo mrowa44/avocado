@@ -89,9 +89,15 @@ class TaskList extends Component {
   }
 
   render() {
+    const tasks = this.state.tasks;
     return (
       <ul className="task-list list-group" onClick={this.setNoneActive} role="button">
-        { this.state.tasks.map(task => (
+        { tasks.length === 0 ?
+          <div className="task-list--empty">
+            You don&#39;t have any pending tasks
+          </div>
+        : null }
+        { tasks.map(task => (
           <Task
             {...task}
             key={task.id}
