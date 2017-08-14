@@ -42,6 +42,6 @@ module.exports = {
   INITIAL_TASKS: [
     { text: 'This is a task, try marking it done by clicking the checkbox', done: false, id: 1 },
     { text: 'You can set a task to focus with CMD + F when it\'s highlighted', done: false, id: 2 },
-    { text: 'Then start a timer :)', done: false, id: 3 },
+    { text: 'Then start a timer and get to work', done: false, id: 3 },
   ],
 };
