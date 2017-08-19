@@ -14,9 +14,9 @@ class Bullets extends Component {
         {
           [...Array(sum)].map((_, index) => {
             if (index < done) {
-              return <div className="bullets__bullet bullets__bullet--done" key={index} />;
+              return <div className="bullets__bullet bullets__bullet--done" />;
             }
-            return <div className="bullets__bullet bullets__bullet--remaining" key={index} />;
+            return <div className="bullets__bullet bullets__bullet--remaining" />;
           })
         }
       </div>
