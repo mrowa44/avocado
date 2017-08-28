@@ -172,7 +172,7 @@ ipc.on(UPDATE_DAILY_GOAL, (event, newGoal) => {
 });
 
 ipc.on(FETCH_ALWAYS_ON_TOP, (event) => {
-  const isAlwaysOnTop = store.get('settings.alwaysOnTop') || false;
+  const isAlwaysOnTop = store.get('settings.alwaysOnTop');
   event.sender.send(FETCHED_ALWAYS_ON_TOP, isAlwaysOnTop);
 });
 

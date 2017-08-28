@@ -78,7 +78,7 @@ class SettingsGeneral extends Component {
           <input
             id="alwaysOnTop"
             type="checkbox"
-            value={this.state.isAlwaysOnTop}
+            checked={this.state.isAlwaysOnTop}
             onChange={this.updateAlwaysOnTop}
           />
         </div>

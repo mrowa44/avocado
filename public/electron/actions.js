@@ -26,17 +26,28 @@ function getMainWindow() {
 
 function collapseWindow() {
   store.set('windowCollapsed', true);
+
   const win = getMainWindow();
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, COLLAPSED_HEIGHT, true);
+
+  const isAlwaysOnTop = store.get('settings.alwaysOnTop');
+  if (isAlwaysOnTop) {
+    win.setAlwaysOnTop(true);
+  }
+
   win.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
 }
 
 function expandWindow() {
+  store.set('windowCollapsed', false);
+
   const win = BrowserWindow.getFocusedWindow();
   const oldBounds = win.getBounds();
   win.setSize(oldBounds.width, EXPANDED_HEIGHT, true);
-  store.set('windowCollapsed', false);
+
+  win.setAlwaysOnTop(false);
+
   win.send(FETCHED_COLLAPSE, store.get('windowCollapsed'));
 }
 
@@ -60,6 +71,7 @@ module.exports = {
     settingsWin.isSettingsWin = true;
     const settingsUrl = isDev ? `${DEV_URL}#settings` : `${BUILD_URL}#settings`;
     settingsWin.loadURL(settingsUrl);
+    if (isDev) { settingsWin.webContents.openDevTools(); }
   },
   startPomodoro(duration, startTime) {
     store.set('pomodoros.current', { duration, startTime });
