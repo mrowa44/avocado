@@ -13,11 +13,13 @@ const {
   COLLAPSE_WINDOW,
   COMPLETE_FOCUS_TASK,
   EXPAND_WINDOW,
+  FETCHED_ALWAYS_ON_TOP,
   FETCHED_COLLAPSE,
   FETCHED_DAILY_GOAL,
   FETCHED_FOCUS,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
+  FETCH_ALWAYS_ON_TOP,
   FETCH_COLLAPSE,
   FETCH_DAILY_GOAL,
   FETCH_FOCUS,
@@ -31,6 +33,7 @@ const {
   POMODORO_TIME,
   SET_FOCUS,
   TOGGLE_DONE,
+  UPDATE_ALWAYS_ON_TOP,
   UPDATE_DAILY_GOAL,
 } = require('../constants');
 const {
@@ -166,4 +169,14 @@ ipc.on(UPDATE_DAILY_GOAL, (event, newGoal) => {
   const mainWin = getMainWindow();
   mainWin.send(FETCHED_POMODOROS, store.get('pomodoros'));
   event.sender.send(FETCHED_DAILY_GOAL, store.get('pomodoros.goal'));
+});
+
+ipc.on(FETCH_ALWAYS_ON_TOP, (event) => {
+  const isAlwaysOnTop = store.get('settings.alwaysOnTop') || false;
+  event.sender.send(FETCHED_ALWAYS_ON_TOP, isAlwaysOnTop);
+});
+
+ipc.on(UPDATE_ALWAYS_ON_TOP, (event, isAlwaysOnTop) => {
+  store.set('settings.alwaysOnTop', isAlwaysOnTop);
+  event.sender.send(FETCHED_ALWAYS_ON_TOP, isAlwaysOnTop);
 });

@@ -38,6 +38,10 @@ module.exports = {
   FETCH_DAILY_GOAL: 'FETCH_DAILY_GOAL',
   FETCHED_DAILY_GOAL: 'FETCHED_DAILY_GOAL',
   UPDATE_DAILY_GOAL: 'UPDATE_DAILY_GOAL',
+  FETCH_ALWAYS_ON_TOP: 'FETCH_ALWAYS_ON_TOP',
+  FETCHED_ALWAYS_ON_TOP: 'FETCHED_ALWAYS_ON_TOP',
+  UPDATE_ALWAYS_ON_TOP: 'UPDATE_ALWAYS_ON_TOP',
+
 
   INITIAL_TASKS: [
     { text: 'This is a task, try marking it done by clicking the checkbox', done: false, id: 1 },

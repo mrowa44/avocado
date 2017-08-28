@@ -12,4 +12,17 @@
   input {
     max-width: 50px;
   }
+
+  &__alwaysOnTop {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    outline: 0;
+    max-width: 238px;
+    margin: auto;
+
+    input {
+      outline: 0;
+    }
+  }
 }
