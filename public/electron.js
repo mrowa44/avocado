@@ -51,7 +51,6 @@ function createWindow() {
 
 app.commandLine.appendSwitch('disable-renderer-backgrounding'); // must be before app.on('ready');
 app.on('ready', createWindow);
-app.on('browser-window-focus', () => { app.dock.setBadge(''); });
 app.on('before-quit', deleteCompleted);
 
 app.on('window-all-closed', () => {

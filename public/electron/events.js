@@ -98,7 +98,6 @@ ipc.on(POMODORO_FINISHED, (event) => {
   store.set(key, count + 1);
   store.set('pomodoros.current', null);
   setNormalIcon();
-  app.dock.setBadge(' ');
   event.sender.send(FETCHED_POMODOROS, store.get('pomodoros'));
 });
 
