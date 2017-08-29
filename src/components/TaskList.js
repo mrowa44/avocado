@@ -33,8 +33,8 @@ class TaskList extends Component {
       this.setState({ tasks });
     });
 
-    Mousetrap.bind('command+j', this.setActiveDown);
-    Mousetrap.bind('command+k', this.setActiveUp);
+    Mousetrap.bind(['command+j', 'down'], this.setActiveDown);
+    Mousetrap.bind(['command+k', 'up'], this.setActiveUp);
     Mousetrap.bind('command+f', this.setToFocus);
   }
 
