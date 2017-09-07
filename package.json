@@ -17,6 +17,7 @@
     "mousetrap": "^1.6.1",
     "prop-types": "^15.5.10",
     "react": "next",
+    "react-beautiful-dnd": "^2.1.1",
     "react-dom": "next",
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2"

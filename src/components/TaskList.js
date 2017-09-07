@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Mousetrap from 'mousetrap';
+import { Draggable } from 'react-beautiful-dnd';
 
-import {
-  FETCHED_TASKS,
-  FETCH_TASKS,
-  SET_FOCUS,
-} from '../constants';
+import { SET_FOCUS } from '../constants';
 import Task from './Task';
 import Focus from './Focus';
+import DragAndDrop from './DragAndDrop';
+
 import './TaskList.css';
 
 const { ipcRenderer: ipc } = window.require('electron');
@@ -28,18 +27,9 @@ class TaskList extends Component {
   }
 
   componentDidMount() {
-    ipc.send(FETCH_TASKS);
-    ipc.on(FETCHED_TASKS, (event, tasks) => {
-      this.setState({ tasks });
-    });
-
     Mousetrap.bind(['command+j', 'down'], this.setActiveDown);
     Mousetrap.bind(['command+k', 'up'], this.setActiveUp);
     Mousetrap.bind('command+f', this.setToFocus);
-  }
-
-  componentWillUnmount() {
-    ipc.removeAllListeners(FETCHED_TASKS);
   }
 
   setActiveDown() {
@@ -89,7 +79,7 @@ class TaskList extends Component {
   }
 
   render() {
-    const tasks = this.state.tasks;
+    const tasks = this.props.tasks;
     return (
       <ul className="task-list list-group" onClick={this.setNoneActive} role="button">
         { tasks.length === 0 ?
@@ -97,22 +87,44 @@ class TaskList extends Component {
             You don&#39;t have any pending tasks
           </div>
         : null }
+
         { tasks.map(task => (
-          <Task
-            {...task}
-            key={task.id}
-            active={task.id === this.state.activeId}
-            setActive={this.setActive}
-            isFocus={task.id === this.props.focusId}
-          />),
-        ) }
+          <Draggable key={task.id} draggableId={task.id}>
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                style={provided.draggableStyle}
+                {...provided.dragHandleProps}
+              >
+                <Task
+                  {...task}
+                  key={task.id}
+                  active={task.id === this.state.activeId}
+                  setActive={this.setActive}
+                  isFocus={task.id === this.props.focusId}
+                  isDragged={snapshot.isDragging}
+                />
+              </div>
+            )}
+          </Draggable>
+        )) }
       </ul>
     );
   }
 }
 
 TaskList.propTypes = {
-  focusId: PropTypes.number, // eslint-disable-line react/require-default-props
+  focusId: PropTypes.number,
+  tasks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
-export default Focus(TaskList);
+TaskList.defaultProps = {
+  focusId: null,
+};
+
+export default Focus(
+  DragAndDrop(TaskList),
+);
