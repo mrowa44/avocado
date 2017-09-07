@@ -41,6 +41,7 @@ class Task extends Component {
     const className = cx('task', 'list-group-item', {
       'task--active': this.props.active,
       'task--focus': isFocus,
+      'task--dragging': this.props.isDragged,
     });
 
     return (
@@ -69,6 +70,7 @@ Task.propTypes = {
   active: PropTypes.bool.isRequired,
   done: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
+  isDragged: PropTypes.bool.isRequired,
   isFocus: PropTypes.bool,
   setActive: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,

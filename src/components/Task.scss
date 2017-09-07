@@ -3,7 +3,7 @@
 .task {
   display: flex;
   align-items: center;
-  min-height: 45px;
+  height: 45px;
 
   &--active {
     background: $blue-hl;
@@ -15,6 +15,10 @@
 
   &--active &__focus {
     color: $white;
+  }
+
+  &--dragging {
+    background: gray;
   }
 
   input[type='checkbox'] {
