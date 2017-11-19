@@ -125,10 +125,16 @@ ipc.on(FETCH_COLLAPSE, (event) => {
 });
 
 ipc.on(SET_FOCUS, (event, task) => {
-  store.set('focus', task);
-  event.sender.send(FETCHED_FOCUS, store.get('focus'));
-  if (store.get('pomodoros.current')) {
-    collapseWindow(event);
+  const currentFocus = store.get('focus');
+  if (currentFocus && currentFocus.id === task.id) {
+    store.set('focus', null);
+    event.sender.send(FETCHED_FOCUS, store.get('focus'));
+  } else {
+    store.set('focus', task);
+    event.sender.send(FETCHED_FOCUS, store.get('focus'));
+    if (store.get('pomodoros.current')) {
+      collapseWindow(event);
+    }
   }
 });
 
