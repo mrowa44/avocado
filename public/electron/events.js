@@ -39,6 +39,7 @@ const {
   collapseWindow,
   expandWindow,
   getMainWindow,
+  markFocusDone,
   startPomodoro,
   stopPomodoro,
 } = require('./actions');
@@ -142,21 +143,7 @@ ipc.on(FETCH_FOCUS, (event) => {
   event.sender.send(FETCHED_FOCUS, store.get('focus'));
 });
 
-ipc.on(COMPLETE_FOCUS_TASK, (event) => {
-  const tasks = store.get('tasks');
-  const focus = store.get('focus');
-  const task = tasks.find(t => t.id === focus.id);
-  const idx = tasks.indexOf(task);
-
-  const toggledTask = Object.assign(task, { done: !task.done });
-  const newTasks = Object.assign(tasks.slice(), { [idx]: toggledTask });
-
-  store.set('tasks', newTasks);
-  store.set('focus', null);
-  event.sender.send(FETCHED_TASKS, store.get('tasks'));
-  event.sender.send(FETCHED_FOCUS, store.get('focus'));
-  expandWindow(event);
-});
+ipc.on(COMPLETE_FOCUS_TASK, markFocusDone);
 
 ipc.on(GIVE_UP_FOCUS, (event) => {
   store.set('focus', null);

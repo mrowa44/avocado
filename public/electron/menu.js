@@ -9,11 +9,12 @@ const {
 
 const {
   deleteCompleted,
+  giveUpFocus,
+  markFocusDone,
   openSettings,
   startPomodoro,
   stopPomodoro,
   toggleExpand,
-  giveUpFocus,
 } = require('./actions');
 
 let icon;
@@ -118,6 +119,11 @@ module.exports = {
             label: 'Give up focus',
             accelerator: 'Cmd+G',
             click: giveUpFocus,
+          },
+          {
+            label: 'Mark focus as done',
+            accelerator: 'Cmd+D',
+            click: markFocusDone,
           },
         ],
       },

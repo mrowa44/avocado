@@ -118,4 +118,22 @@ module.exports = {
       win.send(FETCHED_FOCUS, store.get('focus'));
     }
   },
+  markFocusDone() {
+    const tasks = store.get('tasks');
+    const focus = store.get('focus');
+    if (focus) {
+      const task = tasks.find(t => t.id === focus.id);
+      const idx = tasks.indexOf(task);
+
+      const toggledTask = Object.assign(task, { done: !task.done });
+      const newTasks = Object.assign(tasks.slice(), { [idx]: toggledTask });
+
+      store.set('tasks', newTasks);
+      store.set('focus', null);
+      const win = getMainWindow();
+      win.send(FETCHED_TASKS, store.get('tasks'));
+      win.send(FETCHED_FOCUS, store.get('focus'));
+      expandWindow();
+    }
+  },
 };
