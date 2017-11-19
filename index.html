@@ -3,115 +3,33 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <title>Avocado</title>
   </head>
   <body>
-    <header class="header">
-      <div class="header__left">
-        <div class="header__title">
-          <img src="icon.png" class="header__icon" />
-          <h1>Avocado</h1>
-        </div>
-        <h2>macOS app focused on <span class="header--emphasize">doing</span> - not managing your tasks</h2>
-        <button type="button" class="download">Download</button>
-      </div>
-      <div class="header__right">
-        <img src="screen.png" class="header__screen" />
-      </div>
+    <header>
+      <h1>Avocado</h1>
+      <h3>Fine pomodoro timer for macOS</h3>
     </header>
-    <section class="features-section">
-      <ul class="features-section__left">
-        <li>Dead simple interface focused on doing - not managing your tasks</li>
-        <li>Mouseless interaction</li>
-        <li>Daily pomodoro goal</li>
-      </ul>
-      <ul class="features-section__right">
-        <li>Focus on one task at a time</li>
-        <li>Makes you explicitly admit to failing a task by giving you only 'done' and 'give up' option</li>
-        <li>Todoist, Google Tasks fetch</li>
-      </ul>
-    </section>
-    SCREEEEEEENSHOOOTS HEEEERE
-    <section class="questions-section">
-      <h2 class="section-title">Q & A</h2>
-      <ul class="questions-section__list">
-        <li class="questions-section__item">
-          <div class="questions-section__item-question">
-            What's Avocado?
-          </div>
-          <div class="questions-section__item-answer">
-            It’s not built to replace fancy task managers out there; rather it’s an attempt to enhance them by giving you a dead simple interface to interact with your tasks and actually do them - not to fiddle with them.
-          </div>
-        </li>
-        <li class="questions-section__item">
-          <div class="questions-section__item-question">
-            How it works?
-          </div>
-          <div class="questions-section__item-answer">
-            You use your normal task manager to decide what you want to do today. Those tasks will show up in Avocado. That’s it.
-          </div>
-        </li>
-        <li class="questions-section__item">
-          <div class="questions-section__item-question">
-            Can I pause a pomodoro?
-          </div>
-          <div class="questions-section__item-answer">
-            You can’t because your attention doesn’t work this way - you either focus full time or start over.
-          </div>
-        </li>
-        <li class="questions-section__item">
-          <div class="questions-section__item-question">
-            What if I need to go to the bathroom?
-          </div>
-          <div class="questions-section__item-answer">
-            You have our permission to count that as work, keep the pomodoro going.
-          </div>
-        </li>
-        <li class="questions-section__item">
-          <div class="questions-section__item-question">
-            Money
-          </div>
-          <div class="questions-section__item-answer">
-            A project has to be sustainable, or shut down. Also: <a
-              href="https://blog.pinboard.in/2011/12/don_t_be_a_free_user/">*link*</a>
-          </div>
-        </li>
+    <section>
+      <ul>
+        <li>tasks list</li>
+        <li>fully usable with <a href="https://github.com/mrowa44/avocado#keyboard-shortcuts">keyboard only</a></li>
+        <li>collapsed mode</li>
+        <li>focus mode - concentrate on one task at a time</li>
+        <li>daily pomodoro goal</li>
+        <li>time remaining shown in menu bar</li>
+        <li>fits nicely in OS X look</li>
       </ul>
     </section>
-    <section class="shortcuts-section">
-      <h2 class="section-title">Keyboard shortcuts</h2>
-      <table>
-        <tr>
-          <th>Shortcut</th>
-          <th>Action</th> 
-        </tr>
-        <tr>
-          <td>⌘ L</td>
-          <td>New task or a number to start timer</td> 
-        </tr>
-        <tr>
-          <td>⌘ J</td>
-          <td>Select previous task in list</td> 
-        </tr>
-        <tr>
-          <td>⌘ K</td>
-          <td>Select next task in list</td> 
-        </tr>
-        <tr>
-          <td>⌘ F</td>
-          <td>Set to focus</td> 
-        </tr>
-      </table>
-    </section>
-    <footer class="footer">
-      <div class="footer__text">
-        <h2>That's a damn fine app right there, why won't you try it yourself?</h2>
-        <button type="button" class="download">Download</button>
-      </div>
-      <div class="footer__brand">Avocado</div>
+    <a href="https://github.com/mrowa44/avocado/releases" id="download">
+      Download
+    </a>
+    <img src="screen.png" id="screen" />
+    <footer>
+      <a href="https://github.com/mrowa44/avocado">Source on GitHub</a>
+      |
+      <a href="https://github.com/mrowa44/">Author</a>
     </footer>
   </body>
 </html>
