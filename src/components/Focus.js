@@ -13,6 +13,14 @@ const { ipcRenderer: ipc } = window.require('electron');
 
 function Focus(PassedComponent) {
   return class extends Component {
+    static markDone() {
+      ipc.send(COMPLETE_FOCUS_TASK);
+    }
+
+    static giveUp() {
+      ipc.send(GIVE_UP_FOCUS);
+    }
+
     constructor() {
       super();
       this.state = {
@@ -29,14 +37,6 @@ function Focus(PassedComponent) {
 
     componentWillUnmount() {
       ipc.removeAllListeners(FETCHED_FOCUS);
-    }
-
-    static markDone() {
-      ipc.send(COMPLETE_FOCUS_TASK);
-    }
-
-    static giveUp() {
-      ipc.send(GIVE_UP_FOCUS);
     }
 
     createFocusComponent() {
