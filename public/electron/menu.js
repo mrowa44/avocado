@@ -13,6 +13,7 @@ const {
   startPomodoro,
   stopPomodoro,
   toggleExpand,
+  giveUpFocus,
 } = require('./actions');
 
 let icon;
@@ -112,6 +113,11 @@ module.exports = {
             label: 'Delete completed tasks',
             accelerator: 'Cmd+Shift+Backspace',
             click: deleteCompleted,
+          },
+          {
+            label: 'Give up focus',
+            accelerator: 'Cmd+G',
+            click: giveUpFocus,
           },
         ],
       },

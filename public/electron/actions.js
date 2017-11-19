@@ -13,6 +13,7 @@ const {
   DEV_URL,
   EXPANDED_HEIGHT,
   FETCHED_COLLAPSE,
+  FETCHED_FOCUS,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
 } = require('../constants');
@@ -107,6 +108,14 @@ module.exports = {
       expandWindow();
     } else {
       collapseWindow();
+    }
+  },
+  giveUpFocus() {
+    const task = store.get('focus');
+    const win = getMainWindow();
+    if (task) {
+      store.set('focus', null);
+      win.send(FETCHED_FOCUS, store.get('focus'));
     }
   },
 };
