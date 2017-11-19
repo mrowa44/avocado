@@ -1,12 +1,12 @@
 {
   "name": "Avocado",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "Justyna Rachowicz",
     "email": "mrowa44+avocado@gmail.com"
   },
-  "description": "Avocado - productivity enhancer",
-  "private": true,
+  "description": "Avocado, fine pomodoro timer for macOS",
+  "private": false,
   "dependencies": {
     "classnames": "^2.2.5",
     "electron-context-menu": "^0.9.1",
