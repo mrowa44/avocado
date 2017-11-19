@@ -12,6 +12,7 @@ const {
   openSettings,
   startPomodoro,
   stopPomodoro,
+  toggleExpand,
 } = require('./actions');
 
 let icon;
@@ -127,6 +128,11 @@ module.exports = {
       {
         role: 'window',
         submenu: [
+          {
+            label: 'Expand/collapse',
+            accelerator: 'Cmd+E',
+            click: toggleExpand,
+          },
           { role: 'minimize' },
           { role: 'close' },
           { label: 'Zoom', role: 'zoom' },

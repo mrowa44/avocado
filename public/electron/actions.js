@@ -101,4 +101,12 @@ module.exports = {
       win.send(FETCHED_TASKS, store.get('tasks'));
     }
   },
+  toggleExpand() {
+    const isCollapsed = store.get('windowCollapsed');
+    if (isCollapsed) {
+      expandWindow();
+    } else {
+      collapseWindow();
+    }
+  },
 };
