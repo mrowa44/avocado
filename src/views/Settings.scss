@@ -14,4 +14,9 @@
   &__buttons {
     margin: 10px auto 0;
   }
+
+  .btn-group>.btn:last-child,
+  .btn-group>.btn:first-child {
+    border-radius: 3px;
+  }
 }
