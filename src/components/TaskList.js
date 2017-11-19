@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Mousetrap from 'mousetrap';
 
 import {
+  DELETE_TASK,
   FETCHED_TASKS,
   FETCH_TASKS,
   SET_FOCUS,
@@ -21,6 +22,7 @@ class TaskList extends Component {
     this.setActiveUp = this.setActiveUp.bind(this);
     this.setNoneActive = this.setNoneActive.bind(this);
     this.setToFocus = this.setToFocus.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
     this.state = {
       tasks: [],
       activeId: null,
@@ -36,6 +38,7 @@ class TaskList extends Component {
     Mousetrap.bind(['command+j', 'down'], this.setActiveDown);
     Mousetrap.bind(['command+k', 'up'], this.setActiveUp);
     Mousetrap.bind('command+f', this.setToFocus);
+    Mousetrap.bind('command+backspace', this.deleteTask);
   }
 
   componentWillUnmount() {
@@ -86,6 +89,10 @@ class TaskList extends Component {
         ipc.send(SET_FOCUS, task);
       }
     }
+  }
+
+  deleteTask() {
+    ipc.send(DELETE_TASK, this.state.activeId);
   }
 
   render() {

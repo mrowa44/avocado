@@ -1,4 +1,5 @@
 const Store = require('electron-store');
+const remove = require('lodash.remove');
 
 const { formatToday } = require('../helpers');
 const { ipcMain: ipc } = require('electron');
@@ -11,6 +12,7 @@ const {
   ADD_TODO,
   COLLAPSE_WINDOW,
   COMPLETE_FOCUS_TASK,
+  DELETE_TASK,
   EXPAND_WINDOW,
   FETCHED_ALWAYS_ON_TOP,
   FETCHED_COLLAPSE,
@@ -77,6 +79,19 @@ ipc.on(TOGGLE_DONE, (event, taskId) => {
   }
 
   store.set('tasks', newTasks);
+  event.sender.send(FETCHED_TASKS, store.get('tasks'));
+});
+
+ipc.on(DELETE_TASK, (event, taskId) => {
+  const tasks = store.get('tasks');
+  remove(tasks, task => task.id === taskId);
+  store.set('tasks', tasks);
+
+  const focus = store.get('focus');
+  if (focus && focus.id === taskId) {
+    store.set('focus', null);
+    event.sender.send(FETCHED_FOCUS);
+  }
   event.sender.send(FETCHED_TASKS, store.get('tasks'));
 });
 
