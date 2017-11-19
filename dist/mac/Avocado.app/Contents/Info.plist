@@ -3,7 +3,7 @@
 <plist version="1.0">
   <dict>
     <key>BuildMachineOSBuild</key>
-    <string>15G31</string>
+    <string>16G29</string>
     <key>CFBundleDisplayName</key>
     <string>Avocado</string>
     <key>CFBundleExecutable</key>
@@ -19,9 +19,9 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>0.1.0</string>
+    <string>1.0.0</string>
     <key>CFBundleVersion</key>
-    <string>0.1.0</string>
+    <string>1.0.0</string>
     <key>DTSDKBuild</key>
     <string>14D125</string>
     <key>DTSDKName</key>
@@ -45,6 +45,6 @@
     <key>NSHumanReadableCopyright</key>
     <string>Copyright © 2017 Justyna Rachowicz</string>
     <key>AsarIntegrity</key>
-    <string>{"checksums":{"app.asar":"q1dwtGYzHnBpWZvX6Xqmlyqv6c3yJ+Pd7s6toxFTa/yuD7uHlRz9eFis+ZFSPnZ47ssgGAqP8BtgU8vHxt4SUw==","electron.asar":"E0VzOFDGl10vUSrbYHZmEmLZx1jQKCUPWF+JLngj8lbgihQCML3iAz2ITqK1UhrYEV5lm/xLrs7h8RgAD0pgpw=="}}</string>
+    <string>{"checksums":{"app.asar":"Zk2DXZmEL+eihO9o4RMuLep4cRYALZjsJRwA5D6ajvzzdlhT9WEJfG05INPWtvrPC6v3ju6ctDj2/Mq0mM4C+Q==","electron.asar":"EMuworktGcipjf6N4IPKOo7yFFEHZcKK/43MEuzn5AdBKSjXU6X6OrZWjE2UwRVX2r6V1A2Hp3xhsxUsLLmNUg=="}}</string>
   </dict>
 </plist>

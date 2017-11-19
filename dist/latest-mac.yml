@@ -1,6 +1,10 @@
-version: 0.1.0
-releaseDate: '2017-08-29T13:29:58.137Z'
-githubArtifactName: Avocado-0.1.0-mac.zip
-path: Avocado-0.1.0-mac.zip
-sha512: >-
-  t4GbPXiu11Ns956sWUK04QBWrf2Kx5nojF+mIAMxV1yrRVxQVIiRs/YKBl74KAcnqSEWd4Wh9OJRvrMAm+pLSg==
+version: 1.0.0
+files:
+  - url: Avocado-1.0.0-mac.zip
+    sha512: ZrRInKM2NXKgekOTu4iBHIyHxO1z+fJVdrNj/cTI8qlF7nRV1RPM3/mgTobDzRqhsDAnID1ESLbkq0VJnAr6GA==
+  - url: Avocado-1.0.0.dmg
+    sha512: tjUKm1KOIWBoy3b801gadElVSjnqpq0dqXX/cyf2ZP7M/uaBGpkc9vSqdby7KNS3vxphOQGZ3hDhPorCdGV1Ig==
+    size: 48124467
+path: Avocado-1.0.0-mac.zip
+sha512: ZrRInKM2NXKgekOTu4iBHIyHxO1z+fJVdrNj/cTI8qlF7nRV1RPM3/mgTobDzRqhsDAnID1ESLbkq0VJnAr6GA==
+releaseDate: '2017-11-19T13:10:00.659Z'
