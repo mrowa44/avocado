@@ -5,6 +5,7 @@ import cx from 'classnames';
 import './Task.css';
 
 const {
+  SET_FOCUS,
   TOGGLE_DONE,
 } = require('../constants');
 
@@ -19,6 +20,7 @@ class Task extends Component {
     super(props);
     this.toggleDone = this.toggleDone.bind(this);
     this.setActive = this.setActive.bind(this);
+    this.setToFocus = this.setToFocus.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,6 +31,17 @@ class Task extends Component {
 
   setActive() {
     this.props.setActive(this.props.id);
+  }
+
+  setToFocus() {
+    const done = this.props.done;
+    if (!done) {
+      ipc.send(SET_FOCUS, {
+        id: this.props.id,
+        text: this.props.text,
+        done,
+      });
+    }
   }
 
   toggleDone(event) {
@@ -47,6 +60,7 @@ class Task extends Component {
       <li
         className={className}
         onClick={this.setActive}
+        onDoubleClick={this.setToFocus}
         role="presentation"
         ref={(node) => { this.node = node; }}
       >
