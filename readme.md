@@ -12,6 +12,10 @@
 
 [Download here](https://github.com/mrowa44/avocado/releases)
 
+
+<img src="screen.png" alt="screenshot" width="450">
+
+
 ## Features:
 - tasks list
 - fully usable with keyboard only
