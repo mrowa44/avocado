@@ -1,6 +1,10 @@
+
+<img src="icon.png" alt="logo" width="60px">
+
 # Avocado
 
 > Fine pomodoro timer for macOS
+
 
 [Download here](https://github.com/mrowa44/avocado/releases)
 
