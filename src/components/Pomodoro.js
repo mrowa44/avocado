@@ -26,6 +26,7 @@ class Pomodoro extends Component {
     const notification = new Notification(title, { // eslint-disable-line no-unused-vars
       title,
       body: 'Take a break',
+      icon: '%PUBLIC_URL%/icon.icns',
       // silent: true,
     });
   }
