@@ -33,6 +33,13 @@ header {
 
 h1 {
   margin-bottom: 40px;
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+h3 {
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 ul {
