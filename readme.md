@@ -13,9 +13,6 @@
 [Download here](https://github.com/mrowa44/avocado/releases)
 
 
-<img src="screen.png" alt="screenshot" width="450">
-
-
 ## Features:
 - tasks list
 - fully usable with keyboard only
@@ -24,6 +21,10 @@
 - daily pomodoro goal
 - time remaining shown in menu bar
 - fits nicely in OS X look
+
+## Preview
+
+<img src="screen.png" alt="screenshot" width="450">
 
 
 ## Keyboard shortcuts
