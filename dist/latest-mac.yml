@@ -1,10 +1,10 @@
 version: 1.0.0
 files:
   - url: Avocado-1.0.0-mac.zip
-    sha512: 8/hSxorp/VxKFH0VVJaBLdjRaHoQm6S6HmXELcrtzOE//NZg5T/iZflGIJ3hQyOMp7X3S5nPzjOyRXD/EfHCAg==
+    sha512: lGMpoaEeDSCQcUsYv7V3LGFqO0TKQl2cVA3AzWBpo2ct9eASmwR+Ty9/+r5tnAfQvvIj32+G569DkX/a5aTZ/w==
   - url: Avocado-1.0.0.dmg
-    sha512: XoAak6Ii2eHjaJ1TyC7WrV43gLZhwIlxAfT3XKLY3ymQ5fwamDEGvyMJIq/8PrM4jC/FSwFK5GKsJ90XSmtoOA==
-    size: 48758317
+    sha512: FjH3zjKO/xsUUh/epPEMf6ie89PlN2P+d5GDuoNQYTTOYR3i/0PbTDLMq/ClUFbs+CRdB7V6c1fW3aWH/MvLCA==
+    size: 49400439
 path: Avocado-1.0.0-mac.zip
-sha512: 8/hSxorp/VxKFH0VVJaBLdjRaHoQm6S6HmXELcrtzOE//NZg5T/iZflGIJ3hQyOMp7X3S5nPzjOyRXD/EfHCAg==
-releaseDate: '2017-11-20T06:02:34.945Z'
+sha512: lGMpoaEeDSCQcUsYv7V3LGFqO0TKQl2cVA3AzWBpo2ct9eASmwR+Ty9/+r5tnAfQvvIj32+G569DkX/a5aTZ/w==
+releaseDate: '2017-11-20T07:33:42.340Z'

@@ -16,6 +16,7 @@
     "electron-context-menu": "^0.9.1",
     "electron-is-dev": "^0.2.0",
     "electron-store": "^1.1.0",
+    "electron-updater": "^2.16.1",
     "lodash.remove": "^4.7.0",
     "moment": "^2.18.1",
     "mousetrap": "^1.6.1",

@@ -1,5 +1,6 @@
 const Store = require('electron-store');
 const isDev = require('electron-is-dev');
+const autoUpdater = require('electron-updater').autoUpdater;
 const {
   app,
   BrowserWindow,
@@ -47,6 +48,7 @@ function createWindow() {
   mainWindow.on('closed', () => { mainWindow = null; });
   app.trayIcon = createMenuBarIcon();
   createMenuActions();
+  autoUpdater.checkForUpdatesAndNotify();
   
   const dockIconHidden = store.get('settings.hideDockIcon');
   if (dockIconHidden) {
