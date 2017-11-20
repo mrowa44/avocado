@@ -58,7 +58,11 @@ module.exports = {
   expandWindow,
   openSettings() {
     const windows = BrowserWindow.getAllWindows();
-    if (windows.find(win => win.isSettingsWin)) { return; }
+    const oldSettingsWin = windows.find(win => win.isSettingsWin);
+    if (oldSettingsWin) {
+      oldSettingsWin.focus();
+      return;
+    }
 
     const settingsWin = new BrowserWindow({
       height: 300,

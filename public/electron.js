@@ -47,6 +47,11 @@ function createWindow() {
   mainWindow.on('closed', () => { mainWindow = null; });
   app.trayIcon = createMenuBarIcon();
   createMenuActions();
+  
+  const dockIconHidden = store.get('settings.hideDockIcon');
+  if (dockIconHidden) {
+    app.dock.hide();
+  }
 }
 
 app.commandLine.appendSwitch('disable-renderer-backgrounding'); // must be before app.on('ready');

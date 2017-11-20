@@ -2,7 +2,10 @@ const Store = require('electron-store');
 const remove = require('lodash.remove');
 
 const { formatToday } = require('../helpers');
-const { ipcMain: ipc } = require('electron');
+const {
+  app,
+  ipcMain: ipc,
+} = require('electron');
 const {
   getIconInstance,
   setNoIcon,
@@ -17,12 +20,14 @@ const {
   FETCHED_ALWAYS_ON_TOP,
   FETCHED_COLLAPSE,
   FETCHED_DAILY_GOAL,
+  FETCHED_DOCK_ICON_HIDDEN,
   FETCHED_FOCUS,
   FETCHED_POMODOROS,
   FETCHED_TASKS,
   FETCH_ALWAYS_ON_TOP,
   FETCH_COLLAPSE,
   FETCH_DAILY_GOAL,
+  FETCH_DOCK_ICON_HIDDEN,
   FETCH_FOCUS,
   FETCH_POMODOROS,
   FETCH_TASKS,
@@ -36,6 +41,7 @@ const {
   TOGGLE_DONE,
   UPDATE_ALWAYS_ON_TOP,
   UPDATE_DAILY_GOAL,
+  UPDATE_HIDE_DOCK_ICON,
 } = require('../constants');
 const {
   collapseWindow,
@@ -185,4 +191,19 @@ ipc.on(FETCH_ALWAYS_ON_TOP, (event) => {
 ipc.on(UPDATE_ALWAYS_ON_TOP, (event, isAlwaysOnTop) => {
   store.set('settings.alwaysOnTop', isAlwaysOnTop);
   event.sender.send(FETCHED_ALWAYS_ON_TOP, isAlwaysOnTop);
+});
+
+ipc.on(UPDATE_HIDE_DOCK_ICON, (event, hideDockIcon) => {
+  store.set('settings.hideDockIcon', hideDockIcon);
+  if (hideDockIcon) {
+    app.dock.hide();
+  } else {
+    app.dock.show();
+  }
+  event.sender.send(FETCHED_DOCK_ICON_HIDDEN, hideDockIcon);
+});
+
+ipc.on(FETCH_DOCK_ICON_HIDDEN, (event) => {
+  const isIconHidden = store.get('settings.hideDockIcon');
+  event.sender.send(FETCHED_DOCK_ICON_HIDDEN, isIconHidden);
 });
