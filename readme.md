@@ -1,7 +1,11 @@
 
-<img src="icon.png" alt="logo" width="60px">
 
-# Avocado
+<p align="center">
+	<img width="100" src="icon.png" alt="logo">
+	<br>
+</p>
+<h1 align="center">Avocado</h1>
+
 
 > Fine pomodoro timer for macOS
 
