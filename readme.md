@@ -42,9 +42,9 @@ Combination | Action
 
 ## Development
 
-Run `yarn install` and start the development server with `yarn dev`.  
-Use `yarn electron-pack` to generate dist files.  
-Eslint is used for keeping code quality (with pre-push hook).
+- Run `yarn install` and start the development server with `yarn dev`.  
+- Use `yarn electron-pack` to generate dist files.  
+- Eslint is used for keeping code quality (with pre-push hook).
 
 ## License
 MIT
