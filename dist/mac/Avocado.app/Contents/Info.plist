@@ -3,7 +3,7 @@
 <plist version="1.0">
   <dict>
     <key>BuildMachineOSBuild</key>
-    <string>16G29</string>
+    <string>16G1036</string>
     <key>CFBundleDisplayName</key>
     <string>Avocado</string>
     <key>CFBundleExecutable</key>
@@ -43,8 +43,8 @@
     <key>NSSupportsAutomaticGraphicsSwitching</key>
     <true/>
     <key>NSHumanReadableCopyright</key>
-    <string>Copyright © 2017 Justyna Rachowicz</string>
+    <string>Copyright © 2018 Justyna Rachowicz</string>
     <key>AsarIntegrity</key>
-    <string>{"checksums":{"app.asar":"wp17dqmOzDPUNDwQhI46kXCvQK0sAi4unSNQ02RoF8CDnu89jm3odNz6jU68L8xIzvL9/5n7invArjPb/SYJ7g==","electron.asar":"EMuworktGcipjf6N4IPKOo7yFFEHZcKK/43MEuzn5AdBKSjXU6X6OrZWjE2UwRVX2r6V1A2Hp3xhsxUsLLmNUg=="}}</string>
+    <string>{"checksums":{"app.asar":"Dbgoj1wWFZMPAIJ/OjWqnJddvtAN6CEESYKLSL01xqKTMJxVLA8IsNsQ894D6kfjrAcvX2mmsehx2QzE3i+T4Q==","electron.asar":"N8qMkArPe2Vz78otrpXE3aNxOfCVyD1sqLzLTkMM5HY6Di2N/zv+HQhnv0+XjE/PttdJYymWUm+D0oj39WbLiA=="}}</string>
   </dict>
 </plist>

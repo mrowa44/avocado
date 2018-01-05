@@ -1,0 +1,14 @@
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - build/**/*
+  - node_modules/**/*
+extraMetadata:
+  main: build/electron.js
+appId: com.example.electron-cra
+mac:
+  icon: build/icon.icns
+  publish: github
+extends: react-cra
+electronVersion: 1.7.10
