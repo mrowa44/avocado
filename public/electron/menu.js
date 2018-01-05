@@ -12,6 +12,7 @@ const {
   giveUpFocus,
   markFocusDone,
   openSettings,
+  quitApp,
   startPomodoro,
   stopPomodoro,
   toggleExpand,
@@ -38,6 +39,7 @@ module.exports = {
       { label: '50 min', click: createPomodoro(50) },
       { label: '55 min', click: createPomodoro(55) },
       { label: '60 min', click: createPomodoro(60) },
+      { label: 'Quit', click: quitApp },
     ]);
     icon.setToolTip('Avocado');
     icon.setContextMenu(contextMenu);

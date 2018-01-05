@@ -140,4 +140,7 @@ module.exports = {
       expandWindow();
     }
   },
+  quitApp() {
+    app.quit();
+  },
 };
