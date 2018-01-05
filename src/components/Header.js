@@ -50,8 +50,8 @@ class Header extends Component {
 
   addTodo(event) {
     event.preventDefault();
-    const input = this.input;
-    const value = input.value;
+    const { input } = this;
+    const { value } = input;
     const num = Number(value);
     if (value !== '' && Number.isInteger(num) && num > 0) {
       ipc.send(POMODORO_START, num, moment().format());

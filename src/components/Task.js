@@ -34,7 +34,7 @@ class Task extends Component {
   }
 
   setToFocus() {
-    const done = this.props.done;
+    const { done } = this.props;
     if (!done) {
       ipc.send(SET_FOCUS, {
         id: this.props.id,
@@ -50,7 +50,7 @@ class Task extends Component {
   }
 
   render() {
-    const isFocus = this.props.isFocus;
+    const { isFocus } = this.props;
     const className = cx('task', 'list-group-item', {
       'task--active': this.props.active,
       'task--focus': isFocus,

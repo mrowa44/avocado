@@ -40,7 +40,7 @@ function Focus(PassedComponent) {
     }
 
     createFocusComponent() {
-      const task = this.state.task;
+      const { task } = this.state;
       if (!task) { return null; }
 
       return (
@@ -55,7 +55,7 @@ function Focus(PassedComponent) {
     }
 
     render() {
-      const task = this.state.task;
+      const { task } = this.state;
       return (<PassedComponent
         isFocus={!!task}
         focusComponent={this.createFocusComponent()}

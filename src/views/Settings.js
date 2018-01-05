@@ -18,7 +18,7 @@ class Settings extends Component {
   }
 
   render() {
-    const activeBtn = this.state.activeBtn;
+    const { activeBtn } = this.state;
 
     return (
       <div className="window settings">

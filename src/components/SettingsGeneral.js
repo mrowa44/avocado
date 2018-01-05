@@ -51,8 +51,8 @@ class SettingsGeneral extends Component {
 
   updateGoal(event) {
     event.preventDefault();
-    const input = this.input;
-    const value = input.value;
+    const { input } = this;
+    const { value } = input;
     if (value !== '' && value > 0) {
       ipc.send(UPDATE_DAILY_GOAL, value);
       input.value = '';

@@ -82,7 +82,7 @@ class TaskList extends Component {
   }
 
   setToFocus() {
-    const activeId = this.state.activeId;
+    const { activeId } = this.state;
     if (activeId) {
       const task = this.state.tasks.find(t => t.id === activeId);
       if (!task.done) {
@@ -96,7 +96,7 @@ class TaskList extends Component {
   }
 
   render() {
-    const tasks = this.state.tasks;
+    const { tasks } = this.state;
     return (
       <ul className="task-list list-group" onClick={this.setNoneActive} role="button">
         { tasks.length === 0 ?
@@ -111,8 +111,7 @@ class TaskList extends Component {
             active={task.id === this.state.activeId}
             setActive={this.setActive}
             isFocus={task.id === this.props.focusId}
-          />),
-        ) }
+          />)) }
       </ul>
     );
   }

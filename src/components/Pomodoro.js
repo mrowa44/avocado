@@ -51,7 +51,7 @@ class Pomodoro extends Component {
   componentDidMount() {
     ipc.send(FETCH_POMODOROS);
     ipc.on(FETCHED_POMODOROS, (event, pomodoros) => {
-      const current = pomodoros.current;
+      const { current } = pomodoros;
       const startTime = current && moment(current.startTime);
       const duration = current && current.duration;
       if (startTime && duration) {
@@ -89,7 +89,7 @@ class Pomodoro extends Component {
       minutes,
       seconds: secString,
     });
-    if (!isNaN(minutes) && !isNaN(seconds)) {
+    if (!Number.isNaN(minutes) && !Number.isNaN(seconds)) {
       ipc.send(POMODORO_TIME, `${minutes}:${secString}`);
     }
   }
@@ -141,8 +141,14 @@ class Pomodoro extends Component {
   }
 
   render() {
-    const { minutes, seconds, duration, running, pomodoros } = this.state;
-    const isFocus = this.props.isFocus;
+    const {
+      duration,
+      minutes,
+      pomodoros,
+      running,
+      seconds,
+    } = this.state;
+    const { isFocus } = this.props;
     const timerClass = cx('pomodoro-timer', {
       'pomodoro-timer--running': running,
     });

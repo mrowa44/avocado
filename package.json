@@ -71,6 +71,7 @@
     "eject": "react-scripts eject",
     "electron-pack": "build --em.main=build/electron.js",
     "lint": "eslint 'src/**/*.js'",
+    "fix": "yarn run lint --fix",
     "preelectron-pack": "yarn build",
     "postinstall": "electron-builder install-app-deps",
     "sass-lint": "sass-lint -c .sass-lint.yml 'src/*.scss' -v",
