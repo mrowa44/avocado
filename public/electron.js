@@ -56,6 +56,12 @@ function createWindow() {
   }
 }
 
+// reload automatically in dev env
+try {
+  require('electron-reloader')(module);
+} catch (error) {
+}
+
 app.commandLine.appendSwitch('disable-renderer-backgrounding'); // must be before app.on('ready');
 app.on('ready', createWindow);
 app.on('before-quit', deleteCompleted);
