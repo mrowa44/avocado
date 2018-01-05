@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "electron-context-menu": "^0.9.1",
+    "electron-debug": "^1.5.0",
     "electron-store": "^1.1.0",
-    "electron-updater": "^2.16.1",
+    "electron-updater": "^2.18.2",
     "lodash.remove": "^4.7.0",
     "moment": "^2.18.1",
     "mousetrap": "^1.6.1",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
+    "devtron": "^1.4.0",
     "electron": "^1.7.10",
     "electron-builder": "^19.45.5",
     "electron-is-dev": "^0.3.0",
